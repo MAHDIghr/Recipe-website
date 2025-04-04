@@ -177,6 +177,54 @@
         "imageURL": "http://dagzhsfg97k4.cloudfront.net/wp-content/uploads/2012/05/lentils3.jpg"
     },
     {
+        "name": "Curried Lentils and Rice",
+        "nameFR": "Lentilles et Riz au curry",
+        "Author": "Unknown",
+        "Without": ["NoGluten","NoMilk", "Vegan"],
+        "ingredients": [
+            {
+                "quantity": "1 quart",
+                "name": "beef broth",
+                "type": "Misc"
+            },
+            {
+                "quantity": "1 cup",
+                "name": "dried green lentils",
+                "type": "Misc"
+            },
+            {
+                "quantity": "1/2 cup",
+                "name": "basmati rice",
+                "type": "Misc"
+            },
+            {
+                "quantity": "1 tsp",
+                "name": "curry powder",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1 tsp",
+                "name": "salt",
+                "type": "Condiments"
+            }
+        ],
+        "steps": [
+            "Bring broth to a low boil.",
+            "Add curry powder and salt.",
+            "Cook lentils for 20 minutes.",
+            "Add rice and simmer for 20 minutes.",
+            "Enjoy!"
+        ],
+        "timers": [
+            0,
+            0,
+            20,
+            20,
+            0
+        ],
+        "imageURL": null 
+    },
+    {
         "name": "Big Night Pizza",
         "nameFR": "La pizza des grands soirs",
         "Author": "Unknown",

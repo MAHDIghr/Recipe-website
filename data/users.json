@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "id": "67eff7c409814",
+        "username": "mahdi",
+        "email": "mahdi@gmail.com",
+        "password": "$2y$12$2Pd17p1.W.CtH\/VXnsSfD.N8i7eEYFDbEiACzVfsueolUKUM1qwIO",
+        "role": "admin",
+        "role_request": "cuisinier"
+    }
+]

@@ -1,0 +1,172 @@
+/* Reset et base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, #8bc34a, #689f38);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.role-badge {
+    background-color: #fff;
+    color: #689f38;
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+button {
+    background-color: #689f38;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+button:hover {
+    background-color: #558b2f;
+}
+
+#logoutBtn {
+    background-color: #e53935;
+}
+
+#logoutBtn:hover {
+    background-color: #c62828;
+}
+
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.actions {
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.recipes h2 {
+    margin-bottom: 1.5rem;
+    color: #689f38;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.recipes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.recipe-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+}
+
+.recipe-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.recipe-info {
+    padding: 1rem;
+}
+
+.recipe-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.view-recipe-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+    background-color: #8bc34a;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.language-switcher {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+.language-switcher button {
+    padding: 0.3rem 0.8rem;
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.language-switcher button.active {
+    background-color: #8bc34a;
+    color: white;
+    border-color: #8bc34a;
+}
+
+.recipe-diet-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.diet-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    background-color: #e0f7fa;
+    color: #00796b;
+}
+
+/* Couleurs spécifiques pour les tags */
+.diet-tag.NoGluten { background-color: #e8f5e9; color: #2e7d32; }
+.diet-tag.Vegan { background-color: #f1f8e9; color: #558b2f; }
+.diet-tag.Vegetarian { background-color: #fff3e0; color: #e65100; }
+.diet-tag.NoMilk { background-color: #e3f2fd; color: #1565c0; }
