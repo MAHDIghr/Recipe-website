@@ -1,0 +1,293 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f0f7e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+}
+
+
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.sign-up-container {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+}
+
+.overlay {
+    background: #8bc34a; 
+    background: linear-gradient(to right, #8bc34a, #cddc39); /* Dégradé vert-jaune */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+    color: #FFFFFF;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+    transform: translateX(-20%);
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+}
+
+.container.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+}
+
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
+
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+.container.right-panel-active .overlay-left {
+    transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+    transform: translateX(20%);
+}
+
+button {
+    border-radius: 25px; /* Bordures plus rondes */
+    border: 1px solid #8bc34a;    
+    background-color: #8bc34a;  /* Mauve plus clair */
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+
+form {
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+}
+
+input {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+    border-radius: 25px; /* Bordures plus rondes */
+    font-size: 14px;
+    color: #333; /* Texte plus clair */
+}
+
+input::placeholder {
+    color: #888; /* Texte du placeholder plus clair */
+}
+
+a {
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+/* Animation plus fluide */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-container {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.social-login {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 1000;
+}
+
+/* Animation hover (optionnel) */
+button:hover {
+    background-color: #7cb342; /* Vert légèrement plus foncé */
+}
+
+/* Nouveaux ajouts pour renforcer le thème */
+.form-container {
+    background-color: #fff8f0; /* Fond crème pour les formulaires */
+}
+
+.overlay-panel h1 {
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Améliore la lisibilité */
+}
+
+/* Style de base pour le select des rôles */
+select[name="role_request"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border-radius: 25px;
+    border: 1px solid #8bc34a; /* Vert clair */
+    background-color: #f8f9fa;
+    font-size: 14px;
+    color: #333;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238bc34a'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Style au hover */
+select[name="role_request"]:hover {
+    border-color: #689f38; /* Vert plus foncé */
+    box-shadow: 0 0 0 2px rgba(139, 195, 74, 0.2);
+}
+
+/* Style au focus */
+select[name="role_request"]:focus {
+    outline: none;
+    border-color: #689f38;
+    box-shadow: 0 0 0 3px rgba(139, 195, 74, 0.3);
+}
+
+/* Options du select */
+select[name="role_request"] option {
+    padding: 10px;
+    background: white;
+    color: #333;
+}
+
+/* Style spécifique pour chaque option */
+select[name="role_request"] option[value="cuisinier"] {
+    font-weight: bold;
+    color: #2e7d32; /* Vert foncé */
+}
+
+select[name="role_request"] option[value="demande_chef"] {
+    color: #ef6c00; /* Orange */
+}
+
+select[name="role_request"] option[value="demande_traducteur"] {
+    color: #0277bd; /* Bleu */
+}
+
+/* Style du conteneur si nécessaire */
+.role-select-container {
+    margin: 15px 0;
+    width: 100%;
+    position: relative;
+}
+
+/* Icône personnalisée (alternative) */
+.role-select-container::after {
+    content: "↓";
+    color: #8bc34a;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
