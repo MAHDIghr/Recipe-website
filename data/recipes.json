@@ -1,8 +1,9 @@
 [
     {
+        "id": "1",
         "name": "Crock Pot Roast",
-        "nameFR":"Roti à la cocotte",
-        "Author": "Unknown",
+        "nameFR": "Roti à la cocotte",
+        "Author": "user456",
         "Without": ["NoGluten","NoMilk"],
         "ingredients": [
             {
@@ -76,13 +77,36 @@
             1,
             420
         ],
-        "imageURL": "http://img.sndimg.com/food/image/upload/w_266/v1/img/recipes/27/20/8/picVfzLZo.jpg",
-        "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208"
+        "imageURL": ["http://img.sndimg.com/food/image/upload/w_266/v1/img/recipes/27/20/8/picVfzLZo.jpg"],
+        "langues": ["fr", "en"],
+        "likes": 15,
+        "likedBy": ["user123", "user789"],
+        "comments": [
+            {
+                "id": "com1",
+                "userId": "user123",
+                "username": "JeanDupont",
+                "text": "Cette recette est délicieuse, toute la famille a adoré !",
+                "images": [],
+                "createdAt": "2023-05-20T14:30:00Z"
+            },
+            {
+                "id": "com2",
+                "userId": "user456",
+                "username": "MarieCurie",
+                "text": "J'ai ajouté des carottes et c'était parfait",
+                "images": ["uploads/comment1.jpg"],
+                "createdAt": "2023-05-21T09:15:00Z"
+            }
+        ],
+        "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208",
+        "createdAt": "2023-04-15T10:00:00Z"
     },
     {
+        "id": "2",
         "name": "Roasted Asparagus",
         "nameFR": "Asperges roties",
-        "Author": "Unknown",
+        "Author": "user789",
         "Without": ["NoGluten","NoMilk", "Vegan"],
         "ingredients": [
             {
@@ -125,13 +149,28 @@
             0,
             0
         ],
-        "imageURL": "http://img.sndimg.com/food/image/upload/w_266/v1/img/recipes/50/84/7/picMcSyVd.jpg",
-        "originalURL": "http://www.food.com/recipe/roasted-asparagus-50847"
+        "imageURL": ["http://img.sndimg.com/food/image/upload/w_266/v1/img/recipes/50/84/7/picMcSyVd.jpg"],
+        "langues": ["fr", "en"],
+        "likes": 8,
+        "likedBy": ["user123"],
+        "comments": [
+            {
+                "id": "com3",
+                "userId": "user789",
+                "username": "PierreMartin",
+                "text": "Simple et efficace, parfait pour un accompagnement rapide",
+                "images": [],
+                "createdAt": "2023-05-18T19:45:00Z"
+            }
+        ],
+        "originalURL": "http://www.food.com/recipe/roasted-asparagus-50847",
+        "createdAt": "2023-04-10T08:30:00Z"
     },
     {
+        "id": "3",
         "name": "Curried Lentils and Rice",
         "nameFR": "Lentilles et Riz au curry",
-        "Author": "Unknown",
+        "Author": "user123",
         "Without": ["NoGluten","NoMilk", "Vegan"],
         "ingredients": [
             {
@@ -174,60 +213,19 @@
             20,
             0
         ],
-        "imageURL": "http://dagzhsfg97k4.cloudfront.net/wp-content/uploads/2012/05/lentils3.jpg"
+        "imageURL": ["../assets/img/default-recipe.jpg"],
+        "langues": ["fr", "en"],
+        "likes": 12,
+        "likedBy": ["user456", "user789"],
+        "comments": [],
+        "originalURL": "",
+        "createdAt": "2023-04-05T15:20:00Z"
     },
     {
-        "name": "Curried Lentils and Rice",
-        "nameFR": "Lentilles et Riz au curry",
-        "Author": "Unknown",
-        "Without": ["NoGluten","NoMilk", "Vegan"],
-        "ingredients": [
-            {
-                "quantity": "1 quart",
-                "name": "beef broth",
-                "type": "Misc"
-            },
-            {
-                "quantity": "1 cup",
-                "name": "dried green lentils",
-                "type": "Misc"
-            },
-            {
-                "quantity": "1/2 cup",
-                "name": "basmati rice",
-                "type": "Misc"
-            },
-            {
-                "quantity": "1 tsp",
-                "name": "curry powder",
-                "type": "Condiments"
-            },
-            {
-                "quantity": "1 tsp",
-                "name": "salt",
-                "type": "Condiments"
-            }
-        ],
-        "steps": [
-            "Bring broth to a low boil.",
-            "Add curry powder and salt.",
-            "Cook lentils for 20 minutes.",
-            "Add rice and simmer for 20 minutes.",
-            "Enjoy!"
-        ],
-        "timers": [
-            0,
-            0,
-            20,
-            20,
-            0
-        ],
-        "imageURL": null 
-    },
-    {
+        "id": "4",
         "name": "Big Night Pizza",
         "nameFR": "La pizza des grands soirs",
-        "Author": "Unknown",
+        "Author": "user456",
         "Without": ["Vegetarian"],
         "ingredients": [
             {
@@ -289,12 +287,28 @@
             15,
             0
         ],
-        "imageURL": "http://upload.wikimedia.org/wikipedia/commons/c/c7/Spinach_pizza.jpg"
+        "imageURL": ["http://upload.wikimedia.org/wikipedia/commons/c/c7/Spinach_pizza.jpg"],
+        "langues": ["fr", "en"],
+        "likes": 20,
+        "likedBy": ["user123", "user456", "user789"],
+        "comments": [
+            {
+                "id": "com4",
+                "userId": "user123",
+                "username": "JeanDupont",
+                "text": "La pâte est vraiment réussie avec cette recette",
+                "images": ["uploads/pizza1.jpg", "uploads/pizza2.jpg"],
+                "createdAt": "2023-05-15T20:30:00Z"
+            }
+        ],
+        "originalURL": "",
+        "createdAt": "2023-03-28T12:00:00Z"
     },
     {
+        "id": "5",
         "name": "Cranberry and Apple Stuffed Acorn Squash Recipe",
         "nameFR": "Courge poivrée farcies aux cranberries et aux pommes",
-        "Author": "Unknown",
+        "Author": "user789",
         "Without": ["NoGluten", "Vegetarian"],
         "ingredients": [
             {
@@ -348,14 +362,20 @@
             30,
             0
         ],
-        "imageURL": "http://elanaspantry.com/wp-content/uploads/2008/10/acorn_squash_with_cranberry.jpg",
-        "originalURL": ""
+        "imageURL": ["http://elanaspantry.com/wp-content/uploads/2008/10/acorn_squash_with_cranberry.jpg"],
+        "langues": ["fr", "en"],
+        "likes": 10,
+        "likedBy": ["user123"],
+        "comments": [],
+        "originalURL": "",
+        "createdAt": "2023-03-20T09:45:00Z"
     },
     {
+        "id": "6",
         "name": "Mic's Yorkshire Puds",
-        "nameFR": "Yorkshire pudding  de Mickey",
-        "Author": "Unknown",
-        "Without": [ "Vegetarian"],
+        "nameFR": "Yorkshire pudding de Mickey",
+        "Author": "user123",
+        "Without": ["Vegetarian"],
         "ingredients": [
             {
                 "quantity": "200g",
@@ -400,11 +420,37 @@
             0,
             30
         ],
-        "imageURL": "http://upload.wikimedia.org/wikipedia/commons/f/f9/Yorkshire_Pudding.jpg",
-        "originalURL": "https://fr.wikipedia.org/wiki/Yorkshire_pudding"
+        "imageURL": ["http://upload.wikimedia.org/wikipedia/commons/f/f9/Yorkshire_Pudding.jpg"],
+        "langues": ["fr", "en"],
+        "likes": 7,
+        "likedBy": ["user456"],
+        "comments": [
+            {
+                "id": "com5",
+                "userId": "user456",
+                "username": "MarieCurie",
+                "text": "Un classique toujours aussi bon",
+                "images": [],
+                "createdAt": "2023-05-10T12:20:00Z"
+            },
+            {
+                "id": "com6",
+                "userId": "user789",
+                "username": "PierreMartin",
+                "text": "J'ai eu du mal à faire lever la pâte, des conseils ?",
+                "images": ["uploads/yorkshire1.jpg"],
+                "createdAt": "2023-05-11T18:40:00Z"
+            }
+        ],
+        "originalURL": "https://fr.wikipedia.org/wiki/Yorkshire_pudding",
+        "createdAt": "2023-03-15T14:15:00Z"
     },
     {
+        "id": "7",
         "name": "Old-Fashioned Oatmeal Cookies",
+        "nameFR": "Biscuits aux flocons d'avoine à l'ancienne",
+        "Author": "user456",
+        "Without": ["Vegetarian"],
         "ingredients": [
             {
                 "quantity": "1 cup",
@@ -491,88 +537,20 @@
             8,
             0
         ],
-        "imageURL": "http://s3.amazonaws.com/gmi-digital-library/65caecf7-a8f7-4a09-8513-2659cf92871e.jpg",
-        "originalURL": "#"
+        "imageURL": ["http://s3.amazonaws.com/gmi-digital-library/65caecf7-a8f7-4a09-8513-2659cf92871e.jpg"],
+        "langues": ["en"],
+        "likes": 5,
+        "likedBy": [],
+        "comments": [],
+        "originalURL": "#",
+        "createdAt": "2023-03-10T11:30:00Z"
     },
     {
-        "name": "Blueberry Oatmeal Squares",
-        "ingredients": [
-            {
-                "quantity": "2-1/2 cups",
-                "name": "rolled oats, (not instant)",
-                "type": "Baking"
-            },
-            {
-                "quantity": "1-1/4 cups",
-                "name": "all-purpose flour",
-                "type": "Baking"
-            },
-            {
-                "quantity": "1 tbsp",
-                "name": "grated orange rind",
-                "type": "Produce"
-            },
-            {
-                "quantity": "1/4 tsp",
-                "name": "salt",
-                "type": "Baking"
-            },
-            {
-                "quantity": "1 cup",
-                "name": "cold butter, cubed",
-                "type": "Baking"
-            },
-            {
-                "quantity": "3/4 cup",
-                "name": "packed brown sugar",
-                "type": "Baking"
-            },
-            {
-                "quantity": "3 cups",
-                "name": "fresh blueberries",
-                "type": "Produce"
-            },
-            {
-                "quantity": "1/2 cup",
-                "name": "granulated sugar",
-                "type": "Baking"
-            },
-            {
-                "quantity": "1/3 cup",
-                "name": "orange juice",
-                "type": "Produce"
-            },
-            {
-                "quantity": "4 tsp",
-                "name": "cornstarch",
-                "type": "Baking"
-            }
-        ],
-        "steps": [
-            "Filling: In saucepan, bring blueberries, sugar and orange juice to boil; reduce heat and simmer until tender, about 10 minutes.",
-            "Whisk cornstarch with 2 tbsp (25 mL) water; whisk into blueberries and boil, stirring, until thickened, about 1 minute.",
-            "Place plastic wrap directly on surface; refrigerate until cooled, about 1 hour.",
-            "In large bowl, whisk together oats, flour, sugar, orange rind and salt ; with pastry blender, cut in butter until in coarse crumbs.",
-            "Press half into 8-inch (2 L) square parchment paper–lined metal cake pan; spread with blueberry filling.",
-            "Bake in centre of 350°F oven until light golden, about 45 minutes.",
-            "Let cool on rack before cutting into squares.",
-            "(Make-ahead: Cover and refrigerate for up to 2 days or overwrap with heavy-duty foil and freeze for up to 2 weeks.)"
-        ],
-        "timers": [
-            10,
-            1,
-            60,
-            0,
-            0,
-            45,
-            0,
-            0
-        ],
-        "imageURL": "http://www.canadianliving.com/img/photos/biz/blueberry-oatmeal-squares5801359401371.jpg",
-        "originalURL": "http://www.canadianliving.com/food/blueberry_oatmeal_squares.php"
-    },
-    {
+        "id": "9",
         "name": "Curried chicken salad",
+        "nameFR": "Salade de poulet au curry",
+        "Author": "user123",
+        "Without": ["Vegetarian"],
         "ingredients": [
             {
                 "quantity": "3",
@@ -657,7 +635,21 @@
             0,
             0
         ],
-        "imageURL": "http://www.chatelaine.com/wp-content/uploads/2013/05/Curried-chicken-salad.jpg",
-        "originalURL": "http://www.chatelaine.com/recipe/stovetop-cooking-method/curried-chicken-salad/"
+        "imageURL": ["http://www.chatelaine.com/wp-content/uploads/2013/05/Curried-chicken-salad.jpg"],
+        "langues": ["fr", "en"],
+        "likes": 14,
+        "likedBy": ["user456", "user789"],
+        "comments": [
+            {
+                "id": "com7",
+                "userId": "user123",
+                "username": "JeanDupont",
+                "text": "Parfait pour un pique-nique estival",
+                "images": ["uploads/salad1.jpg"],
+                "createdAt": "2023-05-22T13:10:00Z"
+            }
+        ],
+        "originalURL": "http://www.chatelaine.com/recipe/stovetop-cooking-method/curried-chicken-salad/",
+        "createdAt": "2023-03-05T16:45:00Z"
     }
 ]
