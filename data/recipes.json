@@ -87,10 +87,11 @@
             "fr",
             "en"
         ],
-        "likes": 15,
+        "likes": 16,
         "likedBy": [
             "user123",
-            "user789"
+            "user789",
+            "mahdi"
         ],
         "comments": [
             {
@@ -107,6 +108,8 @@
                 "username": "MarieCurie",
                 "text": "J'ai ajouté des carottes et c'était parfait",
                 "images": [
+                    "uploads\/comment1.jpg",
+                    "uploads\/comment1.jpg",
                     "uploads\/comment1.jpg"
                 ],
                 "createdAt": "2023-05-21T09:15:00Z"
