@@ -22,6 +22,7 @@ $(document).ready(function () {
             password: $('[name="password"]').val(),
             confirmPassword: $('[name="confirmPassword"]').val(),
             role: 'cuisinier', // rôle par défaut
+            second_rol: null,
             role_request: $('[name="role_request"]').val()
         };
 

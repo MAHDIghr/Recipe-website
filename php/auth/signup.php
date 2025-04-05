@@ -32,6 +32,7 @@ $newUser = [
     'email' => $data['email'],
     'password' => password_hash($data['password'], PASSWORD_DEFAULT),
     'role' => 'cuisinier', // Role par défaut
+    'second_role' => null,
     'role_request' => $data['role_request'] ?? null
 ];
 

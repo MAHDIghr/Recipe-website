@@ -17,6 +17,13 @@ $(document).ready(function () {
     if (user.role === 'admin') $('#adminActions').removeClass('hidden');
     if (user.role === 'chef') $('#chefActions').removeClass('hidden');
 
+    // Gestion du bouton Admin
+    if (user.role === 'admin') {
+        $('#adminBtn').click(() => {
+            window.location.href = "adminPage.html";
+        });
+    }
+
     // Gestion de la déconnexion : supprime les données du localStorage et redirige
     $('#logoutBtn').click(() => {
         localStorage.removeItem("authToken");
