@@ -63,7 +63,7 @@ $(document).ready(function () {
         // Pour chaque recette, crée une carte de présentation
         recipes.forEach(recipe => {
             const name = lang === 'fr' ? recipe.nameFR || recipe.name : recipe.name;
-            const image = recipe.imageURL || 'assets/img/default-recipe.jpg';
+            const image = recipe.imagePreferred || 'assets/img/default-recipe.jpg';
             const dietTags = recipe.Without || [];
 
             $('#recipesList').append(`
