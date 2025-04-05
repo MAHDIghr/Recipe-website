@@ -4,6 +4,7 @@
         "name": "Crock Pot Roast",
         "nameFR": "Roti à la cocotte",
         "Author": "user456",
+        "status": "accepted",
         "Without": [
             "NoGluten",
             "NoMilk"
@@ -127,6 +128,7 @@
         "name": "Roasted Asparagus",
         "nameFR": "Asperges roties",
         "Author": "user789",
+        "status": "accepted",
         "Without": [
             "NoGluten",
             "NoMilk",
@@ -203,6 +205,7 @@
         "name": "Curried Lentils and Rice",
         "nameFR": "Lentilles et Riz au curry",
         "Author": "user123",
+        "status": "accepted",
         "Without": [
             "NoGluten",
             "NoMilk",
@@ -271,6 +274,7 @@
         "name": "Big Night Pizza",
         "nameFR": "La pizza des grands soirs",
         "Author": "user456",
+        "status": "accepted",
         "Without": [
             "Vegetarian"
         ],
@@ -369,6 +373,7 @@
         "name": "Cranberry and Apple Stuffed Acorn Squash Recipe",
         "nameFR": "Courge poivrée farcies aux cranberries et aux pommes",
         "Author": "user789",
+        "status": "accepted",
         "Without": [
             "NoGluten",
             "Vegetarian"
@@ -446,6 +451,7 @@
         "name": "Mic's Yorkshire Puds",
         "nameFR": "Yorkshire pudding de Mickey",
         "Author": "user123",
+        "status": "accepted",
         "Without": [
             "Vegetarian"
         ],
@@ -549,6 +555,7 @@
         "name": "Old-Fashioned Oatmeal Cookies",
         "nameFR": "Biscuits aux flocons d'avoine à l'ancienne",
         "Author": "user456",
+        "status": "accepted",
         "Without": [
             "Vegetarian"
         ],
@@ -656,6 +663,7 @@
         "name": "Curried chicken salad",
         "nameFR": "Salade de poulet au curry",
         "Author": "user123",
+        "status": "accepted",
         "Without": [
             "Vegetarian"
         ],
