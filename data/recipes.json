@@ -87,11 +87,10 @@
             "fr",
             "en"
         ],
-        "likes": 16,
+        "likes": 15,
         "likedBy": [
             "user123",
-            "user789",
-            "mahdi"
+            "user789"
         ],
         "comments": [
             {
@@ -522,6 +521,14 @@
                 "text": "test",
                 "images": [],
                 "createdAt": "2025-04-05T00:16:04.346Z"
+            },
+            {
+                "id": "com1743852733268",
+                "userId": "mahdi",
+                "username": "mahdi",
+                "text": "ok",
+                "images": [],
+                "createdAt": "2025-04-05T11:32:13.268Z"
             }
         ],
         "originalURL": "https:\/\/fr.wikipedia.org\/wiki\/Yorkshire_pudding",

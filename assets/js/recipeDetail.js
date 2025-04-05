@@ -1,24 +1,26 @@
 $(document).ready(function () {
+    // === Initialisation des variables ===
     const user = JSON.parse(localStorage.getItem("userData"));
     const recipeId = new URLSearchParams(window.location.search).get('id');
     let currentLanguage = 'fr';
     let currentRecipe = null;
 
+    // Redirection si utilisateur non connecté
     if (!user) {
         window.location.href = "loginSignUp.html";
         return;
     }
 
-    // Initialisation
+    // ===  Affichage des infos utilisateur ===
     $('#username').text(user.username);
     $('#userRole').text(user.role);
 
-    // Gestion des rôles
+    // ===  Affichage conditionnel selon le rôle ===
     if (user.role === 'admin') $('#adminActions').removeClass('hidden');
     if (user.role === 'chef') $('#chefActions').removeClass('hidden');
     if (user.role === 'translator') $('#translatorActions').removeClass('hidden');
 
-    // Boutons
+    // ===  Gestion des événements UI ===
     $('#backBtn').click(() => window.history.back());
     $('#logoutBtn').click(logout);
     $('#switchToFr').click(() => switchLanguage('fr'));
@@ -27,13 +29,14 @@ $(document).ready(function () {
     $('#commentForm').submit(addComment);
     $('#deleteRecipeBtn').click(deleteRecipe);
 
-    // Chargement de la recette
+    // ===  Chargement de la recette si ID présent ===
     if (recipeId) {
         loadRecipeDetails(recipeId);
     } else {
         showError('Recette non trouvée');
     }
 
+    // ===  Fonction AJAX pour charger les données d'une recette ===
     function loadRecipeDetails(id) {
         $.get('php/recipes/getRecipeById.php?id=' + id)
             .done(recipe => {
@@ -52,8 +55,9 @@ $(document).ready(function () {
             });
     }
 
+    // ===  Affichage des données de la recette ===
     function displayRecipe(recipe) {
-        // Infos de base
+        // Titre
         $('#recipeTitle').text(currentLanguage === 'fr' ? recipe.nameFR || recipe.name : recipe.name);
         $('#recipeAuthor').text(recipe.Author);
         $('#recipeDate').text(new Date(recipe.createdAt).toLocaleDateString());
@@ -82,7 +86,7 @@ $(document).ready(function () {
             }
         });
 
-        // Étapes
+        // Étapes de préparation
         const stepsList = $('#stepsList').empty();
         const steps = currentLanguage === 'fr' ? 
             (recipe.stepsFR || recipe.steps) : recipe.steps;
@@ -94,10 +98,11 @@ $(document).ready(function () {
         // Commentaires
         displayComments(recipe.comments || []);
         
-        // Bouton like
+        // Mise à jour du bouton Like
         updateLikeButton(recipe.likedBy || []);
     }
 
+    // ===  Affichage des commentaires ===
     function displayComments(comments) {
         const container = $('#commentsList').empty();
         comments.forEach(comment => {
@@ -117,6 +122,7 @@ $(document).ready(function () {
         });
     }
 
+    // ===  Bouton Like dynamique (toggle) ===
     function updateLikeButton(likedBy) {
         const hasLiked = likedBy.includes(user.username);
         $('#likeBtn i')
@@ -132,23 +138,24 @@ $(document).ready(function () {
         const hasLiked = likedBy.includes(user.username);
         
         if (hasLiked) {
-            // Retirer le like
+            // Annuler le like
             currentRecipe.likedBy = likedBy.filter(u => u !== user.username);
             currentRecipe.likes--;
         } else {
-            // Ajouter le like
+            // Ajouter un like
             currentRecipe.likedBy = [...likedBy, user.username];
             currentRecipe.likes++;
         }
         
-        // Mettre à jour l'affichage
+        // Mise à jour UI
         $('#likeCount').text(currentRecipe.likes);
         updateLikeButton(currentRecipe.likedBy);
         
-        // Envoyer la mise à jour au serveur
+        // Envoi au serveur via AJAX
         updateRecipeOnServer();
     }
 
+    // ===  Soumission du formulaire de commentaire ===
     function addComment(e) {
         e.preventDefault();
         if (!currentRecipe) return;
@@ -161,7 +168,7 @@ $(document).ready(function () {
             userId: user.username,
             username: user.username,
             text: commentText,
-            images: [], // À implémenter: upload d'images
+            images: [], //upload d'images a coder par la suite (je l'ai pas encore fini)
             createdAt: new Date().toISOString()
         };
         
@@ -169,10 +176,11 @@ $(document).ready(function () {
         displayComments(currentRecipe.comments);
         $('#commentText').val('');
         
-        // Envoyer la mise à jour au serveur
+        // Envoi au serveur via AJAX
         updateRecipeOnServer();
     }
 
+    // ===  Suppression de recette via AJAX ===
     function deleteRecipe() {
         if (!confirm("Êtes-vous sûr de vouloir supprimer cette recette ?")) return;
         
@@ -191,13 +199,14 @@ $(document).ready(function () {
         });
     }
 
+    // ===  Mise à jour de recette via AJAX ===
     function updateRecipeOnServer() {
         if (!currentRecipe) return;
     
         $.ajax({
             url: 'php/recipes/updateRecipe.php',
             method: 'POST',
-            data: { recipe: JSON.stringify(currentRecipe) }, // Modification ici
+            data: { recipe: JSON.stringify(currentRecipe) },
             success: () => console.log('Recette mise à jour avec succès'),
             error: xhr => {
                 console.error("Erreur:", xhr.responseText);
@@ -205,7 +214,8 @@ $(document).ready(function () {
             }
         });
     }
-    
+
+    // ===  Gestion du changement de langue ===
     function switchLanguage(lang) {
         if (!currentRecipe || !currentRecipe.langues.includes(lang)) return;
         
@@ -220,18 +230,21 @@ $(document).ready(function () {
         $('#switchToEn').toggleClass('hidden', !availableLangs.includes('en'));
     }
 
+    // ===  Vérification des droits du chef ===
     function checkChefPermissions(user, recipe) {
         if (user.role === 'chef' && user.username === recipe.Author) {
             $('#chefEditRecipeBtn').removeClass('hidden');
         }
     }
 
+    // ===  Déconnexion ===
     function logout() {
         localStorage.removeItem("authToken");
         localStorage.removeItem("userData");
         window.location.href = "loginSignUp.html";
     }
 
+    // ===  Affichage d'une erreur simple ===
     function showError(message) {
         $('#recipeTitle').text(message);
     }
