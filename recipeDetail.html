@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails de la recette - Recipe.com</title>
+    <link rel="stylesheet" href="assets/css/recipeDetail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <button id="backBtn" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+            <h1>Recipe.com</h1>
+        </div>
+        <div class="user-info">
+            <span id="username"></span>
+            <span id="userRole" class="role-badge"></span>
+            <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Déconnexion</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="recipe-actions">
+            <div class="language-switcher">
+                <button id="switchToFr" class="active">FR</button>
+                <button id="switchToEn">EN</button>
+            </div>
+            <div id="adminActions" class="hidden">
+                <button id="deleteRecipeBtn" class="danger-btn"><i class="fas fa-trash"></i> Supprimer</button>
+                <button id="editRecipeBtn"><i class="fas fa-edit"></i> Modifier</button>
+                <button id="translateRecipeBtn"><i class="fas fa-language"></i> Traduire</button>
+            </div>
+            <div id="chefActions" class="hidden">
+                <button id="chefEditRecipeBtn"><i class="fas fa-edit"></i> Modifier</button>
+            </div>
+            <div id="translatorActions" class="hidden">
+                <button id="translatorTranslateBtn"><i class="fas fa-language"></i> Traduire</button>
+            </div>
+        </section>
+
+        <section class="recipe-detail">
+            <div class="recipe-header">
+                <h2 id="recipeTitle"></h2>
+                <div class="recipe-likes">
+                    <button id="likeBtn"><i class="far fa-heart"></i></button>
+                    <span id="likeCount">0</span> j'aime
+                </div>
+            </div>
+            
+            <div class="recipe-images" id="recipeImages"></div>
+            
+            <div class="recipe-meta">
+                <div><strong>Auteur:</strong> <span id="recipeAuthor"></span></div>
+                <div><strong>Créée le:</strong> <span id="recipeDate"></span></div>
+                <div class="diet-tags" id="dietTags"></div>
+            </div>
+
+            <div class="recipe-content">
+                <div class="ingredients-section">
+                    <h3>Ingrédients</h3>
+                    <ul id="ingredientsList"></ul>
+                </div>
+                
+                <div class="steps-section">
+                    <h3>Étapes de préparation</h3>
+                    <ol id="stepsList"></ol>
+                </div>
+            </div>
+
+            <div class="comments-section">
+                <h3>Commentaires</h3>
+                <div id="commentsList"></div>
+                
+                <form id="commentForm">
+                    <textarea id="commentText" placeholder="Ajouter un commentaire..." required></textarea>
+                    <div class="comment-actions">
+                        <input type="file" id="commentImage" accept="image/*">
+                        <button type="submit"><i class="fas fa-paper-plane"></i> Publier</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/recipeDetail.js"></script>
+</body>
+</html>

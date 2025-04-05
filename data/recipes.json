@@ -4,7 +4,10 @@
         "name": "Crock Pot Roast",
         "nameFR": "Roti à la cocotte",
         "Author": "user456",
-        "Without": ["NoGluten","NoMilk"],
+        "Without": [
+            "NoGluten",
+            "NoMilk"
+        ],
         "ingredients": [
             {
                 "quantity": "1",
@@ -27,7 +30,7 @@
                 "type": "Condiments"
             },
             {
-                "quantity": "1/2 cup",
+                "quantity": "1\/2 cup",
                 "name": "water",
                 "type": "Drinks"
             }
@@ -54,7 +57,7 @@
                 "type": "Condiments"
             },
             {
-                "quantity": "1/2 verre",
+                "quantity": "1\/2 verre",
                 "name": "eau",
                 "type": "Boisson"
             }
@@ -77,10 +80,18 @@
             1,
             420
         ],
-        "imageURL": ["http://img.sndimg.com/food/image/upload/w_266/v1/img/recipes/27/20/8/picVfzLZo.jpg"],
-        "langues": ["fr", "en"],
+        "imageURL": [
+            "http:\/\/img.sndimg.com\/food\/image\/upload\/w_266\/v1\/img\/recipes\/27\/20\/8\/picVfzLZo.jpg"
+        ],
+        "langues": [
+            "fr",
+            "en"
+        ],
         "likes": 15,
-        "likedBy": ["user123", "user789"],
+        "likedBy": [
+            "user123",
+            "user789"
+        ],
         "comments": [
             {
                 "id": "com1",
@@ -95,11 +106,13 @@
                 "userId": "user456",
                 "username": "MarieCurie",
                 "text": "J'ai ajouté des carottes et c'était parfait",
-                "images": ["uploads/comment1.jpg"],
+                "images": [
+                    "uploads\/comment1.jpg"
+                ],
                 "createdAt": "2023-05-21T09:15:00Z"
             }
         ],
-        "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208",
+        "originalURL": "http:\/\/www.food.com\/recipe\/to-die-for-crock-pot-roast-27208",
         "createdAt": "2023-04-15T10:00:00Z"
     },
     {
@@ -107,7 +120,11 @@
         "name": "Roasted Asparagus",
         "nameFR": "Asperges roties",
         "Author": "user789",
-        "Without": ["NoGluten","NoMilk", "Vegan"],
+        "Without": [
+            "NoGluten",
+            "NoMilk",
+            "Vegan"
+        ],
         "ingredients": [
             {
                 "quantity": "1 lb",
@@ -115,12 +132,12 @@
                 "type": "Produce"
             },
             {
-                "quantity": "1 1/2 tbsp",
+                "quantity": "1 1\/2 tbsp",
                 "name": "olive oil",
                 "type": "Condiments"
             },
             {
-                "quantity": "1/2 tsp",
+                "quantity": "1\/2 tsp",
                 "name": "kosher salt",
                 "type": "Baking"
             }
@@ -149,10 +166,17 @@
             0,
             0
         ],
-        "imageURL": ["http://img.sndimg.com/food/image/upload/w_266/v1/img/recipes/50/84/7/picMcSyVd.jpg"],
-        "langues": ["fr", "en"],
+        "imageURL": [
+            "http:\/\/img.sndimg.com\/food\/image\/upload\/w_266\/v1\/img\/recipes\/50\/84\/7\/picMcSyVd.jpg"
+        ],
+        "langues": [
+            "fr",
+            "en"
+        ],
         "likes": 8,
-        "likedBy": ["user123"],
+        "likedBy": [
+            "user123"
+        ],
         "comments": [
             {
                 "id": "com3",
@@ -163,7 +187,7 @@
                 "createdAt": "2023-05-18T19:45:00Z"
             }
         ],
-        "originalURL": "http://www.food.com/recipe/roasted-asparagus-50847",
+        "originalURL": "http:\/\/www.food.com\/recipe\/roasted-asparagus-50847",
         "createdAt": "2023-04-10T08:30:00Z"
     },
     {
@@ -171,7 +195,11 @@
         "name": "Curried Lentils and Rice",
         "nameFR": "Lentilles et Riz au curry",
         "Author": "user123",
-        "Without": ["NoGluten","NoMilk", "Vegan"],
+        "Without": [
+            "NoGluten",
+            "NoMilk",
+            "Vegan"
+        ],
         "ingredients": [
             {
                 "quantity": "1 quart",
@@ -184,7 +212,7 @@
                 "type": "Misc"
             },
             {
-                "quantity": "1/2 cup",
+                "quantity": "1\/2 cup",
                 "name": "basmati rice",
                 "type": "Misc"
             },
@@ -213,10 +241,18 @@
             20,
             0
         ],
-        "imageURL": ["../assets/img/default-recipe.jpg"],
-        "langues": ["fr", "en"],
+        "imageURL": [
+            "..\/assets\/img\/default-recipe.jpg"
+        ],
+        "langues": [
+            "fr",
+            "en"
+        ],
         "likes": 12,
-        "likedBy": ["user456", "user789"],
+        "likedBy": [
+            "user456",
+            "user789"
+        ],
         "comments": [],
         "originalURL": "",
         "createdAt": "2023-04-05T15:20:00Z"
@@ -226,7 +262,9 @@
         "name": "Big Night Pizza",
         "nameFR": "La pizza des grands soirs",
         "Author": "user456",
-        "Without": ["Vegetarian"],
+        "Without": [
+            "Vegetarian"
+        ],
         "ingredients": [
             {
                 "quantity": "5 teaspoons",
@@ -259,12 +297,12 @@
                 "type": "Misc"
             },
             {
-                "quantity": "1/4 cup",
+                "quantity": "1\/4 cup",
                 "name": "pizza sauce",
                 "type": "Misc"
             },
             {
-                "quantity": "3/4 cup",
+                "quantity": "3\/4 cup",
                 "name": "mozzarella cheese",
                 "type": "Dairy"
             }
@@ -287,17 +325,29 @@
             15,
             0
         ],
-        "imageURL": ["http://upload.wikimedia.org/wikipedia/commons/c/c7/Spinach_pizza.jpg"],
-        "langues": ["fr", "en"],
+        "imageURL": [
+            "http:\/\/upload.wikimedia.org\/wikipedia\/commons\/c\/c7\/Spinach_pizza.jpg"
+        ],
+        "langues": [
+            "fr",
+            "en"
+        ],
         "likes": 20,
-        "likedBy": ["user123", "user456", "user789"],
+        "likedBy": [
+            "user123",
+            "user456",
+            "user789"
+        ],
         "comments": [
             {
                 "id": "com4",
                 "userId": "user123",
                 "username": "JeanDupont",
                 "text": "La pâte est vraiment réussie avec cette recette",
-                "images": ["uploads/pizza1.jpg", "uploads/pizza2.jpg"],
+                "images": [
+                    "uploads\/pizza1.jpg",
+                    "uploads\/pizza2.jpg"
+                ],
                 "createdAt": "2023-05-15T20:30:00Z"
             }
         ],
@@ -309,7 +359,10 @@
         "name": "Cranberry and Apple Stuffed Acorn Squash Recipe",
         "nameFR": "Courge poivrée farcies aux cranberries et aux pommes",
         "Author": "user789",
-        "Without": ["NoGluten", "Vegetarian"],
+        "Without": [
+            "NoGluten",
+            "Vegetarian"
+        ],
         "ingredients": [
             {
                 "quantity": "2",
@@ -327,7 +380,7 @@
                 "type": "Produce"
             },
             {
-                "quantity": "1/2 cup",
+                "quantity": "1\/2 cup",
                 "name": "dried cranberries",
                 "type": "Produce"
             },
@@ -345,7 +398,7 @@
         "steps": [
             "Cut squash in half, remove seeds.",
             "Place squash in baking dish, cut-side down.",
-            "Pour 1/4-inch water into dish.",
+            "Pour 1\/4-inch water into dish.",
             "Bake for 30 minutes at 350 degrees F.",
             "In large bowl, combine remaining ingredients.",
             "Remove squash from oven, fill with mix.",
@@ -362,10 +415,17 @@
             30,
             0
         ],
-        "imageURL": ["http://elanaspantry.com/wp-content/uploads/2008/10/acorn_squash_with_cranberry.jpg"],
-        "langues": ["fr", "en"],
+        "imageURL": [
+            "http:\/\/elanaspantry.com\/wp-content\/uploads\/2008\/10\/acorn_squash_with_cranberry.jpg"
+        ],
+        "langues": [
+            "fr",
+            "en"
+        ],
         "likes": 10,
-        "likedBy": ["user123"],
+        "likedBy": [
+            "user123"
+        ],
         "comments": [],
         "originalURL": "",
         "createdAt": "2023-03-20T09:45:00Z"
@@ -375,7 +435,9 @@
         "name": "Mic's Yorkshire Puds",
         "nameFR": "Yorkshire pudding de Mickey",
         "Author": "user123",
-        "Without": ["Vegetarian"],
+        "Without": [
+            "Vegetarian"
+        ],
         "ingredients": [
             {
                 "quantity": "200g",
@@ -403,7 +465,7 @@
             "Stir in eggs, one at a time.",
             "Whisk in milk until you have a smooth batter.",
             "Chill in the fridge for at least 30 minutes.",
-            "Heat oven to 220C/gas mark 7.",
+            "Heat oven to 220C\/gas mark 7.",
             "Pour the oil into the holes of a 8-hole muffin tin.",
             "Heat tin in the oven for 5 minutes.",
             "Ladle the batter mix into the tin.",
@@ -420,10 +482,17 @@
             0,
             30
         ],
-        "imageURL": ["http://upload.wikimedia.org/wikipedia/commons/f/f9/Yorkshire_Pudding.jpg"],
-        "langues": ["fr", "en"],
+        "imageURL": [
+            "http:\/\/upload.wikimedia.org\/wikipedia\/commons\/f\/f9\/Yorkshire_Pudding.jpg"
+        ],
+        "langues": [
+            "fr",
+            "en"
+        ],
         "likes": 7,
-        "likedBy": ["user456"],
+        "likedBy": [
+            "user456"
+        ],
         "comments": [
             {
                 "id": "com5",
@@ -438,11 +507,21 @@
                 "userId": "user789",
                 "username": "PierreMartin",
                 "text": "J'ai eu du mal à faire lever la pâte, des conseils ?",
-                "images": ["uploads/yorkshire1.jpg"],
+                "images": [
+                    "uploads\/yorkshire1.jpg"
+                ],
                 "createdAt": "2023-05-11T18:40:00Z"
+            },
+            {
+                "id": "com1743812164346",
+                "userId": "mahdi",
+                "username": "mahdi",
+                "text": "test",
+                "images": [],
+                "createdAt": "2025-04-05T00:16:04.346Z"
             }
         ],
-        "originalURL": "https://fr.wikipedia.org/wiki/Yorkshire_pudding",
+        "originalURL": "https:\/\/fr.wikipedia.org\/wiki\/Yorkshire_pudding",
         "createdAt": "2023-03-15T14:15:00Z"
     },
     {
@@ -450,7 +529,9 @@
         "name": "Old-Fashioned Oatmeal Cookies",
         "nameFR": "Biscuits aux flocons d'avoine à l'ancienne",
         "Author": "user456",
-        "Without": ["Vegetarian"],
+        "Without": [
+            "Vegetarian"
+        ],
         "ingredients": [
             {
                 "quantity": "1 cup",
@@ -463,17 +544,17 @@
                 "type": "Drinks"
             },
             {
-                "quantity": "3/4 cup",
+                "quantity": "3\/4 cup",
                 "name": "shortening",
                 "type": "Baking"
             },
             {
-                "quantity": "1 1/2 cups",
+                "quantity": "1 1\/2 cups",
                 "name": "sugar",
                 "type": "Baking"
             },
             {
-                "quantity": "2 1/2 cups",
+                "quantity": "2 1\/2 cups",
                 "name": "flour",
                 "type": "Baking"
             },
@@ -493,12 +574,12 @@
                 "type": "Baking"
             },
             {
-                "quantity": "1/2 tsp.",
+                "quantity": "1\/2 tsp.",
                 "name": "baking powder",
                 "type": "Baking"
             },
             {
-                "quantity": "1/2 tsp.",
+                "quantity": "1\/2 tsp.",
                 "name": "cloves",
                 "type": "Baking"
             },
@@ -508,7 +589,7 @@
                 "type": "Baking"
             },
             {
-                "quantity": "1/2 cup",
+                "quantity": "1\/2 cup",
                 "name": "chopped nuts",
                 "type": "Baking"
             }
@@ -516,14 +597,14 @@
         "steps": [
             "Simmer raisins and water over medium heat until raisins are plump, about 15 minutes.",
             "Drain raisins, reserving the liquid.",
-            "Add enough water to reserved liquid to measure 1/2 cup.",
+            "Add enough water to reserved liquid to measure 1\/2 cup.",
             "Heat oven to 400°.",
             "Mix thoroughly shortening, sugar, eggs and vanilla.",
             "Stir in reserved liquid.",
             "Blend in remaining ingredients.",
             "Drop dough by rounded teaspoonfuls about 2 inches apart onto ungreased baking sheet.",
             "Bake 8 to 10 minutes or until light brown.",
-            "About 6 1/2 dozen cookies."
+            "About 6 1\/2 dozen cookies."
         ],
         "timers": [
             15,
@@ -537,8 +618,12 @@
             8,
             0
         ],
-        "imageURL": ["http://s3.amazonaws.com/gmi-digital-library/65caecf7-a8f7-4a09-8513-2659cf92871e.jpg"],
-        "langues": ["en"],
+        "imageURL": [
+            "http:\/\/s3.amazonaws.com\/gmi-digital-library\/65caecf7-a8f7-4a09-8513-2659cf92871e.jpg"
+        ],
+        "langues": [
+            "en"
+        ],
         "likes": 5,
         "likedBy": [],
         "comments": [],
@@ -550,7 +635,9 @@
         "name": "Curried chicken salad",
         "nameFR": "Salade de poulet au curry",
         "Author": "user123",
-        "Without": ["Vegetarian"],
+        "Without": [
+            "Vegetarian"
+        ],
         "ingredients": [
             {
                 "quantity": "3",
@@ -558,7 +645,7 @@
                 "type": "Meat"
             },
             {
-                "quantity": "1/2 cup",
+                "quantity": "1\/2 cup",
                 "name": "mayonnaise",
                 "type": "Baking"
             },
@@ -573,12 +660,12 @@
                 "type": "Produce"
             },
             {
-                "quantity": "1 1/2 tsp",
+                "quantity": "1 1\/2 tsp",
                 "name": "curry powder",
                 "type": "Baking"
             },
             {
-                "quantity": "1/4 tsp",
+                "quantity": "1\/4 tsp",
                 "name": "salt",
                 "type": "Baking"
             },
@@ -588,7 +675,7 @@
                 "type": "Produce"
             },
             {
-                "quantity": "1/4 cup",
+                "quantity": "1\/4 cup",
                 "name": "dried cranberries",
                 "type": "Produce"
             },
@@ -635,21 +722,31 @@
             0,
             0
         ],
-        "imageURL": ["http://www.chatelaine.com/wp-content/uploads/2013/05/Curried-chicken-salad.jpg"],
-        "langues": ["fr", "en"],
+        "imageURL": [
+            "http:\/\/www.chatelaine.com\/wp-content\/uploads\/2013\/05\/Curried-chicken-salad.jpg"
+        ],
+        "langues": [
+            "fr",
+            "en"
+        ],
         "likes": 14,
-        "likedBy": ["user456", "user789"],
+        "likedBy": [
+            "user456",
+            "user789"
+        ],
         "comments": [
             {
                 "id": "com7",
                 "userId": "user123",
                 "username": "JeanDupont",
                 "text": "Parfait pour un pique-nique estival",
-                "images": ["uploads/salad1.jpg"],
+                "images": [
+                    "uploads\/salad1.jpg"
+                ],
                 "createdAt": "2023-05-22T13:10:00Z"
             }
         ],
-        "originalURL": "http://www.chatelaine.com/recipe/stovetop-cooking-method/curried-chicken-salad/",
+        "originalURL": "http:\/\/www.chatelaine.com\/recipe\/stovetop-cooking-method\/curried-chicken-salad\/",
         "createdAt": "2023-03-05T16:45:00Z"
     }
 ]

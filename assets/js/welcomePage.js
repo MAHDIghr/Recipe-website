@@ -70,7 +70,8 @@ $(document).ready(function () {
         });
 
         $('.view-recipe-btn').click(function() {
-            alert("Fonctionnalité à implémenter");
+            const recipeId = $(this).data('id');
+            window.location.href = `recipeDetail.html?id=${recipeId}`;
         });
     }
 });
