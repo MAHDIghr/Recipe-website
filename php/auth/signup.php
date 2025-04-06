@@ -49,6 +49,7 @@ echo json_encode([
         'username' => $newUser['username'],
         'email' => $newUser['email'],
         'role' => $newUser['role'],
+        'second_role' => $newUser['second_role'],
         'role_request' => $newUser['role_request']
     ]
 ]);

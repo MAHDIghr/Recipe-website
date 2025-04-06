@@ -28,11 +28,11 @@
     },
     {
         "id": "67f140adb38bf",
-        "username": "cuisinier",
+        "username": "traducteur",
         "email": "cuis@gmail.com",
         "password": "$2y$12$J5wUtWhWj9GC884AwMukM.gg8M8qhmy1\/MMcUdF77gTShUdO.zROu",
-        "role": "cuisinier",
-        "second_role": null,
-        "role_request": "cuisinier"
+        "role": "chef",
+        "second_role": "traducteur",
+        "role_request": null
     }
 ]

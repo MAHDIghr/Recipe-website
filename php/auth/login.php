@@ -37,6 +37,7 @@ echo json_encode([
         'username' => $foundUser['username'],
         'email' => $foundUser['email'],
         'role' => $foundUser['role'],
+        'second_role' => $foundUser['second_role'],
         'role_request' => $foundUser['role_request'] ?? null
     ]
 ]);

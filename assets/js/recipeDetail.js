@@ -16,9 +16,13 @@ $(document).ready(function () {
     $('#userRole').text(user.role);
 
     // ===  Affichage conditionnel selon le rôle ===
-    if (user.role === 'admin') $('#adminActions').removeClass('hidden');
+    if (user.second_role === 'traducteur') $('#translatorActions').removeClass('hidden');
+    if (user.role === 'admin') {
+        $('#adminActions').removeClass('hidden');
+        $('#translatorActions').removeClass('hidden');
+    }
     if (user.role === 'chef') $('#chefActions').removeClass('hidden');
-    if (user.role === 'translator') $('#translatorActions').removeClass('hidden');
+    
 
     // ===  Gestion des événements UI ===
     $('#backBtn').click(() => window.history.back());
@@ -28,6 +32,9 @@ $(document).ready(function () {
     $('#likeBtn').click(toggleLike);
     $('#commentForm').submit(addComment);
     $('#deleteRecipeBtn').click(deleteRecipe);
+    $('#translateRecipeBtn').click(() => {
+        window.location.href = `translateRecipe.html?id=${currentRecipe.id}`;
+    });
 
     // ===  Chargement de la recette si ID présent ===
     if (recipeId) {

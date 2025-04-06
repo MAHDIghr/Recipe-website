@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traduction de recette - Recipe.com</title>
+    <link rel="stylesheet" href="assets/css/translateRecipe.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <button id="backBtn" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+            <h1>Recipe.com</h1>
+        </div>
+        <div class="user-info">
+            <span id="username"></span>
+            <span id="userRole" class="role-badge"></span>
+            <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Déconnexion</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="translation-header">
+            <h2><i class="fas fa-language"></i> Traduction de recette</h2>
+            <div class="translation-actions">
+                <button id="saveTranslationBtn" class="primary-btn">
+                    <i class="fas fa-save"></i> Enregistrer la traduction
+                </button>
+            </div>
+        </div>
+
+        <div class="translation-container">
+            <div class="translation-column" id="frenchColumn">
+                <h3><i class="fas fa-flag"></i> Français</h3>
+                <div class="translation-section">
+                    <label>Nom de la recette</label>
+                    <input type="text" id="recipeNameFR" readonly>
+                </div>
+                
+                <div class="translation-section">
+                    <label>Ingrédients</label>
+                    <div id="ingredientsFR" class="ingredients-list"></div>
+                </div>
+                
+                <div class="translation-section">
+                    <label>Étapes de préparation</label>
+                    <div id="stepsFR" class="steps-list"></div>
+                </div>
+            </div>
+
+            <div class="translation-column" id="englishColumn">
+                <h3><i class="fas fa-flag-usa"></i> Anglais</h3>
+                <div class="translation-section">
+                    <label>Recipe name</label>
+                    <input type="text" id="recipeNameEN">
+                </div>
+                
+                <div class="translation-section">
+                    <label>Ingredients</label>
+                    <div id="ingredientsEN" class="ingredients-list"></div>
+                </div>
+                
+                <div class="translation-section">
+                    <label>Preparation steps</label>
+                    <div id="stepsEN" class="steps-list"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/translateRecipe.js"></script>
+</body>
+</html>
