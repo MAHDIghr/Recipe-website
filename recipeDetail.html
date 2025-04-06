@@ -75,10 +75,31 @@
                 <form id="commentForm">
                     <textarea id="commentText" placeholder="Ajouter un commentaire..." required></textarea>
                     <div class="comment-actions">
-                        <input type="file" id="commentImage" accept="image/*">
+                        <div class="comment-image-options">
+                            <button type="button" id="addCommentLocalImageBtn"><i class="fas fa-upload"></i> Uploader</button>
+                            <button type="button" id="addCommentUrlImageBtn"><i class="fas fa-link"></i> Lien URL</button>
+                            <input type="file" id="commentImageUploadInput" accept="image/*" multiple style="display: none;">
+                        </div>
+                        <div id="commentImagesPreview" class="images-preview"></div>
                         <button type="submit"><i class="fas fa-paper-plane"></i> Publier</button>
                     </div>
                 </form>
+                
+                <!-- Modal pour ajouter une image par URL -->
+                <div id="commentUrlImageModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3>Ajouter une image par URL</h3>
+                        <div class="form-group">
+                            <label for="commentImageUrl">URL de l'image</label>
+                            <input type="url" id="commentImageUrl" placeholder="https://example.com/image.jpg">
+                        </div>
+                        <div class="modal-actions">
+                            <button type="button" class="secondary-btn close-modal">Annuler</button>
+                            <button type="button" id="confirmCommentUrlImageBtn">Ajouter</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

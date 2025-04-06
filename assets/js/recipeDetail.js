@@ -4,6 +4,10 @@ $(document).ready(function () {
     const recipeId = new URLSearchParams(window.location.search).get('id');
     let currentLanguage = 'fr';
     let currentRecipe = null;
+    
+    // Variables pour les images de commentaires
+    let commentImages = []; // Pour stocker les fichiers images avant upload
+    let commentImageUrls = []; // Pour stocker les URLs d'images
 
     // Redirection si utilisateur non connecté
     if (!user) {
@@ -22,8 +26,6 @@ $(document).ready(function () {
         $('#translatorActions').removeClass('hidden');
     }
     
-    
-
     // ===  Gestion des événements UI ===
     $('#backBtn').click(() => window.history.back());
     $('#logoutBtn').click(logout);
@@ -38,6 +40,13 @@ $(document).ready(function () {
     $('#chefEditRecipeBtn').click(() => {
         window.location.href = `editRecipe.html?id=${currentRecipe.id}`;
     });
+    
+    // Gestion des images de commentaires
+    $('#addCommentLocalImageBtn').click(() => $('#commentImageUploadInput').click());
+    $('#addCommentUrlImageBtn').click(() => $('#commentUrlImageModal').show());
+    $('#commentImageUploadInput').change(handleCommentImageUpload);
+    $('#confirmCommentUrlImageBtn').click(addCommentImageFromUrl);
+    $('.close-modal').click(() => $('#commentUrlImageModal').hide());
 
     // ===  Chargement de la recette si ID présent ===
     if (recipeId) {
@@ -118,7 +127,7 @@ $(document).ready(function () {
     function displayComments(comments) {
         const container = $('#commentsList').empty();
         comments.forEach(comment => {
-            container.append(`
+            const commentElement = $(`
                 <div class="comment">
                     <div class="comment-header">
                         <strong>${comment.username}</strong>
@@ -127,10 +136,101 @@ $(document).ready(function () {
                     <p>${comment.text}</p>
                     ${comment.images && comment.images.length > 0 ? 
                         `<div class="comment-images">
-                            ${comment.images.map(img => `<img src="${img}" alt="Commentaire photo">`).join('')}
+                            ${comment.images.map(img => `
+                                <img src="${img.startsWith('uploads/') ? '../' + img : img}" 
+                                     alt="Commentaire photo" class="comment-image">
+                            `).join('')}
                         </div>` : ''}
                 </div>
             `);
+            
+            container.append(commentElement);
+        });
+    }
+
+    // === Gestion des images de commentaires ===
+    function handleCommentImageUpload(e) {
+        const files = e.target.files;
+        if (!files.length) return;
+        
+        const previewContainer = $('#commentImagesPreview');
+        
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            
+            // Vérification que c'est bien une image
+            if (!file.type.match('image.*')) continue;
+            
+            commentImages.push(file);
+            
+            // Création d'un aperçu
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imgElement = $(`
+                    <div class="comment-image-preview-item" data-index="${commentImages.length - 1}">
+                        <img src="${e.target.result}" alt="Aperçu">
+                        <div class="comment-image-actions">
+                            <button type="button" class="delete-comment-image-btn">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `);
+                
+                previewContainer.append(imgElement);
+                
+                imgElement.find('.delete-comment-image-btn').click(() => {
+                    const index = parseInt(imgElement.attr('data-index'));
+                    commentImages = commentImages.filter((_, i) => i !== index);
+                    imgElement.remove();
+                });
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        // Réinitialise la valeur pour permettre de sélectionner les mêmes fichiers à nouveau
+        $(this).val('');
+    }
+
+    function addCommentImageFromUrl() {
+        const url = $('#commentImageUrl').val().trim();
+        if (!url) {
+            alert("Veuillez entrer une URL valide");
+            return;
+        }
+
+        // Vérification simple de l'URL
+        if (!url.match(/^https?:\/\/.+\..+/) || !url.match(/\.(jpeg|jpg|gif|png|svg)$/)) {
+            alert("URL d'image invalide. Doit commencer par http/https et se terminer par .jpg, .png ou .gif .svg");
+            return;
+        }
+
+        commentImageUrls.push(url);
+        displayCommentImage(url);
+        $('#commentImageUrl').val('');
+        $('#commentUrlImageModal').hide();
+    }
+
+    function displayCommentImage(imgUrl) {
+        const previewContainer = $('#commentImagesPreview');
+        const index = commentImageUrls.length - 1;
+        
+        const imgElement = $(`
+            <div class="comment-image-preview-item" data-url-index="${index}">
+                <img src="${imgUrl}" alt="Aperçu">
+                <div class="comment-image-actions">
+                    <button type="button" class="delete-comment-image-btn">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        `);
+        
+        previewContainer.append(imgElement);
+        
+        imgElement.find('.delete-comment-image-btn').click(() => {
+            commentImageUrls = commentImageUrls.filter((_, i) => i !== index);
+            imgElement.remove();
         });
     }
 
@@ -175,18 +275,59 @@ $(document).ready(function () {
         const commentText = $('#commentText').val().trim();
         if (!commentText) return;
         
+        // Si des images locales sont sélectionnées, on les upload d'abord
+        if (commentImages.length > 0) {
+            uploadCommentImages(commentText);
+        } else {
+            createComment(commentText, commentImageUrls);
+        }
+    }
+
+    function uploadCommentImages(commentText) {
+        const formData = new FormData();
+        
+        commentImages.forEach((file) => {
+            formData.append('images[]', file);
+        });
+
+        $.ajax({
+            url: 'php/recipes/uploadImages.php',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: (response) => {
+                if (response.success) {
+                    // Combine les images uploadées avec les URLs
+                    const allImages = [...response.imagePaths, ...commentImageUrls];
+                    createComment(commentText, allImages);
+                } else {
+                    alert("Erreur lors de l'upload des images: " + response.message);
+                }
+            },
+            error: (xhr) => {
+                console.error("Erreur:", xhr.responseText);
+                alert("Erreur lors de l'upload des images");
+            }
+        });
+    }
+
+    function createComment(commentText, images) {
         const newComment = {
             id: 'com' + Date.now(),
             userId: user.username,
             username: user.username,
             text: commentText,
-            images: [], //upload d'images a coder par la suite (je l'ai pas encore fini)
+            images: images,
             createdAt: new Date().toISOString()
         };
         
         currentRecipe.comments = [...(currentRecipe.comments || []), newComment];
         displayComments(currentRecipe.comments);
         $('#commentText').val('');
+        $('#commentImagesPreview').empty();
+        commentImages = [];
+        commentImageUrls = [];
         
         // Envoi au serveur via AJAX
         updateRecipeOnServer();
