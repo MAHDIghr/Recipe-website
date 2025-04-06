@@ -131,6 +131,27 @@ $(document).ready(function() {
             return;
         }
 
+        // Vérification du nombre d'ingrédients
+        // Récupération des ingrédients avec vérification
+        const ingredientsEN = getIngredients('EN');
+        if (ingredientsEN === null) return; // S'arrête si erreur dans les ingrédients EN
+        
+        const ingredientsFR = getIngredients('FR');
+        if (ingredientsFR === null) return; // S'arrête si erreur dans les ingrédients FR
+
+        if (ingredientsEN.length !== ingredientsFR.length && (ingredientsEN.length > 0 && ingredientsFR.length > 0)) {
+            alert('Le nombre d\'ingrédients en français doit être égal au nombre d\'ingrédients en anglais');
+            return;
+        }
+
+        // Vérification du nombre d'étapes
+        const stepsEN = getSteps('EN');
+        const stepsFR = getSteps('FR');
+        if (stepsEN.length !== stepsFR.length && (stepsEN.length > 0 && stepsFR.length > 0)) {
+            alert('Le nombre d\'étapes en français doit être égal au nombre d\'étapes en anglais');
+            return;
+        }
+
         // Récupération des données du formulaire
         const recipeData = {
             id: 'rec-' + Date.now(),
@@ -139,10 +160,10 @@ $(document).ready(function() {
             Author: user.username,
             status: 'nonAccepted',
             Without: $('input[name="dietTags"]:checked').map((i, el) => $(el).val()).get(),
-            ingredients: getIngredients('EN'),
-            ingredientsFR: getIngredients('FR'),
-            steps: getSteps('EN'),
-            stepsFR: getSteps('FR'),
+            ingredients: ingredientsEN,
+            ingredientsFR: ingredientsFR,
+            steps: stepsEN,
+            stepsFR: stepsFR,
             timers: getTimers('EN'),
             imageURL: [],
             imagePreferred: '',
@@ -220,19 +241,36 @@ $(document).ready(function() {
 
     function getIngredients(lang) {
         const ingredients = [];
+        let hasError = false;
+        
         $(`#ingredients${lang}Container .ingredient-item`).each(function() {
             const quantity = $(this).find('.ingredient-quantity').val().trim();
             const name = $(this).find('.ingredient-name').val().trim();
             const type = $(this).find('.ingredient-type').val().trim();
             
+            // Vérification que tous les champs sont remplis ou tous vides
+            const fields = [quantity, name, type];
+            const filledFields = fields.filter(field => field !== '');
+            
+            if (filledFields.length > 0 && filledFields.length < 3) {
+                alert(`Pour l'ingrédient en ${lang === 'FR' ? 'français' : 'anglais'}, vous devez remplir tous les champs ou aucun.`);
+                hasError = true;
+                return false; // Sortie de la boucle each
+            }
+            
             if (name) {
                 ingredients.push({
-                    quantity: quantity || '',
+                    quantity: quantity,
                     name: name,
                     type: type || 'Misc'
                 });
             }
         });
+        
+        if (hasError) {
+            return null; // Retourne null en cas d'erreur
+        }
+        
         return ingredients;
     }
 

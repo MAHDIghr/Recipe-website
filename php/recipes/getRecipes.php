@@ -13,19 +13,13 @@ if (!file_exists($recipesFile)) {
 // Lecture et décodage des recettes
 $recipes = json_decode(file_get_contents($recipesFile), true);
 
-$acceptedRecipes = [];
-
+// Générer un id unique s'il manque
 foreach ($recipes as &$recipe) {
-    // Génère un ID unique si manquant
     if (!isset($recipe['id'])) {
         $recipe['id'] = uniqid();
     }
-
-    // Ne garder que les recettes avec le statut "accepted"
-    if (isset($recipe['status']) && $recipe['status'] === 'accepted') {
-        $acceptedRecipes[] = $recipe;
-    }
 }
 
-// Retourne uniquement les recettes acceptées
-echo json_encode($acceptedRecipes);
+// Retourner toutes les recettes (sans filtre)
+echo json_encode($recipes);
+?>

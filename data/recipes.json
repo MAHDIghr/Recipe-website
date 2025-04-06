@@ -2,9 +2,9 @@
     {
         "id": "1",
         "name": "Crock Pot Roast",
-        "nameFR": "Roti à la cocotte",
+        "nameFR": "Roti \u00e0 la cocotte",
         "Author": "user456",
-        "status": "nonAccepted",
+        "status": "accepted",
         "Without": [
             "NoGluten",
             "NoMilk"
@@ -73,7 +73,7 @@
             "Placer le roti dans la cocotte en fonte",
             "Melanger les sachets de sauces en poudre dans un bol et saupoudrer le roti avec.",
             "Arroser le roti",
-            "Cuire à feu doux entre 7 et 9 heures."
+            "Cuire \u00e0 feu doux entre 7 et 9 heures."
         ],
         "timers": [
             1,
@@ -105,7 +105,7 @@
                 "id": "com1",
                 "userId": "user123",
                 "username": "JeanDupont",
-                "text": "Cette recette est délicieuse, toute la famille a adoré !",
+                "text": "Cette recette est d\u00e9licieuse, toute la famille a ador\u00e9 !",
                 "images": [],
                 "createdAt": "2023-05-20T14:30:00Z"
             },
@@ -113,7 +113,7 @@
                 "id": "com2",
                 "userId": "user456",
                 "username": "MarieCurie",
-                "text": "J'ai ajouté des carottes et c'était parfait",
+                "text": "J'ai ajout\u00e9 des carottes et c'\u00e9tait parfait",
                 "images": [
                     "uploads\/comment1.jpg",
                     "uploads\/comment1.jpg",
@@ -162,7 +162,7 @@
             }
         ],
         "steps": [
-            "Preheat oven to 425°F.",
+            "Preheat oven to 425\u00b0F.",
             "Cut off the woody bottom part of the asparagus spears and discard.",
             "With a vegetable peeler, peel off the skin on the bottom 2-3 inches of the spears (this keeps the asparagus from being all.\",string.\", and if you eat asparagus you know what I mean by that).",
             "Place asparagus on foil-lined baking sheet and drizzle with olive oil.",
@@ -368,7 +368,7 @@
                 "id": "com4",
                 "userId": "user123",
                 "username": "JeanDupont",
-                "text": "La pâte est vraiment réussie avec cette recette",
+                "text": "La p\u00e2te est vraiment r\u00e9ussie avec cette recette",
                 "images": [
                     "uploads\/pizza1.jpg",
                     "uploads\/pizza2.jpg"
@@ -382,7 +382,7 @@
     {
         "id": "5",
         "name": "Cranberry and Apple Stuffed Acorn Squash Recipe",
-        "nameFR": "Courge poivrée farcies aux cranberries et aux pommes",
+        "nameFR": "Courge poivr\u00e9e farcies aux cranberries et aux pommes",
         "Author": "user789",
         "status": "accepted",
         "Without": [
@@ -535,7 +535,7 @@
                 "id": "com6",
                 "userId": "user789",
                 "username": "PierreMartin",
-                "text": "J'ai eu du mal à faire lever la pâte, des conseils ?",
+                "text": "J'ai eu du mal \u00e0 faire lever la p\u00e2te, des conseils ?",
                 "images": [
                     "uploads\/yorkshire1.jpg"
                 ],
@@ -564,7 +564,7 @@
     {
         "id": "7",
         "name": "Old-Fashioned Oatmeal Cookies",
-        "nameFR": "Biscuits aux flocons d'avoine à l'ancienne",
+        "nameFR": "Biscuits aux flocons d'avoine \u00e0 l'ancienne",
         "Author": "user456",
         "status": "accepted",
         "Without": [
@@ -636,7 +636,7 @@
             "Simmer raisins and water over medium heat until raisins are plump, about 15 minutes.",
             "Drain raisins, reserving the liquid.",
             "Add enough water to reserved liquid to measure 1\/2 cup.",
-            "Heat oven to 400°.",
+            "Heat oven to 400\u00b0.",
             "Mix thoroughly shortening, sugar, eggs and vanilla.",
             "Stir in reserved liquid.",
             "Blend in remaining ingredients.",

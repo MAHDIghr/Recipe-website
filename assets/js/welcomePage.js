@@ -22,6 +22,9 @@ $(document).ready(function () {
         $('#addRecipeBtn').click(() => {
             window.location.href = "createRecipe.html";
         });
+        $('#myRecipesBtn').click(function() {
+            window.location.href = "myRecipes.html";
+        });    
     }
     // Gestion du bouton Admin
     if (user.role === 'admin') {
@@ -30,6 +33,7 @@ $(document).ready(function () {
         });
     }
 
+    
     // Gestion de la déconnexion : supprime les données du localStorage et redirige
     $('#logoutBtn').click(() => {
         localStorage.removeItem("authToken");
@@ -62,7 +66,8 @@ $(document).ready(function () {
     // Fonction pour récupérer les recettes depuis le backend
     function loadRecipes() {
         $.get('php/recipes/getRecipes.php', function(recipes) {
-            renderRecipes(recipes, currentLanguage);
+            const acceptedRecipes = recipes.filter(recipe => recipe.status === 'accepted');
+            renderRecipes(acceptedRecipes, currentLanguage);
         }).fail(xhr => {
             console.error("Erreur:", xhr.responseText);
             $('#recipesList').html('<p>Erreur de chargement.</p>');
