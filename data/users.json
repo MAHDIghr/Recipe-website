@@ -1,38 +1,11 @@
 [
     {
-        "id": "67eff7c409814",
-        "username": "mahdi",
-        "email": "mahdi@gmail.com",
-        "password": "$2y$12$2Pd17p1.W.CtH\/VXnsSfD.N8i7eEYFDbEiACzVfsueolUKUM1qwIO",
+        "id": "67f309d550690",
+        "username": "admin",
+        "email": "admin@gmail.com",
+        "password": "$2y$12$W7jeoaPvtgJITnh7SbHjNe9ITC1iwhCcMdcTP0Nc1IPSqonPclONa",
         "role": "admin",
         "second_role": null,
         "role_request": "cuisinier"
-    },
-    {
-        "id": "67f13fd291a3b",
-        "username": "demande chef",
-        "email": "ddemand@gmail.com",
-        "password": "$2y$12$anmYbYq70\/51O0ZsxSekbuwQSLGdhGjkI0i6aB677AHhnNX538Xk6",
-        "role": "chef",
-        "second_role": null,
-        "role_request": null
-    },
-    {
-        "id": "67f1409442a72",
-        "username": "demandeTraducteur",
-        "email": "trad@gmail.com",
-        "password": "$2y$12$YxkltYuYXj5Lpbt8q\/BQqO13v99IRjC97ZG0WE2caI0x1GPWexI\/O",
-        "role": "chef",
-        "second_role": null,
-        "role_request": null
-    },
-    {
-        "id": "67f140adb38bf",
-        "username": "traducteur",
-        "email": "cuis@gmail.com",
-        "password": "$2y$12$J5wUtWhWj9GC884AwMukM.gg8M8qhmy1\/MMcUdF77gTShUdO.zROu",
-        "role": "chef",
-        "second_role": "traducteur",
-        "role_request": null
     }
 ]
