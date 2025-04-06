@@ -695,7 +695,69 @@
                 "type": "Produce"
             },
             {
-                "quantity": "1 tbsp ",
+                "quantity": "1 tbsp",
+                "name": "lemon juice",
+                "type": "Produce"
+            },
+            {
+                "quantity": "1 1\/2 tsp",
+                "name": "curry powder",
+                "type": "Baking"
+            },
+            {
+                "quantity": "1\/4 tsp",
+                "name": "salt",
+                "type": "Baking"
+            },
+            {
+                "quantity": "2",
+                "name": "ripe mangoes, diced",
+                "type": "Produce"
+            },
+            {
+                "quantity": "1\/4 cup",
+                "name": "dried cranberries",
+                "type": "Produce"
+            },
+            {
+                "quantity": "2",
+                "name": "green onions, thinly sliced",
+                "type": "Produce"
+            },
+            {
+                "quantity": "1",
+                "name": "celery stalk, finely chopped",
+                "type": "Produce"
+            },
+            {
+                "quantity": "6 leaves",
+                "name": "Boston lettuce",
+                "type": "Produce"
+            },
+            {
+                "quantity": "6",
+                "name": "English muffins, toasted",
+                "type": "Misc"
+            }
+        ],
+        "ingredientsFR": [
+            {
+                "quantity": "3",
+                "name": "skinless, boneless chicken breasts, halved lengthwise",
+                "type": "Meat"
+            },
+            {
+                "quantity": "1\/2 cup",
+                "name": "mayonnaise",
+                "type": "Baking"
+            },
+            {
+                "quantity": "1 tbsp",
+                "name": "lemon zest",
+                "type": "Produce"
+            },
+            {
+                "quantity": "1 tbsp",
                 "name": "lemon juice",
                 "type": "Produce"
             },
@@ -751,7 +813,27 @@
             "Divide among muffins with lettuce leaves",
             "Sandwich with tops"
         ],
+        "stepsFR": [
+            "ARRANGE chicken in a single layer in a large pot.",
+            "Add water to just cover.",
+            "Bring to a boil over medium-high.",
+            "Flip chicken, reduce heat to medium and simmer until cooked, about 6 more min.",
+            "Cool.",
+            "STIR mayo with lemon zest, juice, curry and salt in large bowl.",
+            "Using 2 forks, shred chicken, then stir into mayo mixture with mango, cranberries, green onions and celery.",
+            "Divide among muffins with lettuce leaves",
+            "Sandwich with tops"
+        ],
         "timers": [
+            0,
+            0,
+            0,
+            6,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -762,10 +844,6 @@
             0,
             0
         ],
-        "imageURL": [
-            "http:\/\/www.chatelaine.com\/wp-content\/uploads\/2013\/05\/Curried-chicken-salad.jpg"
-        ],
-        "imagePreferred": "http:\/\/www.chatelaine.com\/wp-content\/uploads\/2013\/05\/Curried-chicken-salad.jpg",
         "langues": [
             "fr",
             "en"
@@ -788,6 +866,11 @@
             }
         ],
         "originalURL": "http:\/\/www.chatelaine.com\/recipe\/stovetop-cooking-method\/curried-chicken-salad\/",
-        "createdAt": "2023-03-05T16:45:00Z"
+        "createdAt": "2023-03-05T16:45:00Z",
+        "imageURL": [
+            "http:\/\/www.chatelaine.com\/wp-content\/uploads\/2013\/05\/Curried-chicken-salad.jpg",
+            "http:\/\/img.sndimg.com\/food\/image\/upload\/w_266\/v1\/img\/recipes\/27\/20\/8\/picVfzLZo.jpg"
+        ],
+        "imagePreferred": "http:\/\/www.chatelaine.com\/wp-content\/uploads\/2013\/05\/Curried-chicken-salad.jpg"
     }
 ]

@@ -91,8 +91,7 @@ $(document).ready(function () {
 
         $('.edit-recipe-btn').click(function() {
             const recipeId = $(this).data('id');
-            // À implémenter plus tard
-            alert('Fonctionnalité de modification à implémenter');
+            window.location.href = `editRecipe.html?id=${recipeId}`;
         });
 
         $('.delete-recipe-btn').click(function() {

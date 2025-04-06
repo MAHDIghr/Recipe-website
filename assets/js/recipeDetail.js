@@ -35,6 +35,9 @@ $(document).ready(function () {
     $('#translateRecipeBtn').click(() => {
         window.location.href = `translateRecipe.html?id=${currentRecipe.id}`;
     });
+    $('#chefEditRecipeBtn').click(() => {
+        window.location.href = `editRecipe.html?id=${currentRecipe.id}`;
+    });
 
     // ===  Chargement de la recette si ID présent ===
     if (recipeId) {
