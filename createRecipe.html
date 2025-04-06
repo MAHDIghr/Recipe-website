@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer une recette - Recipe.com</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/createRecipe.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <button id="backBtn" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+            <h1>Recipe.com</h1>
+        </div>
+        <div class="user-info">
+            <span id="username"></span>
+            <span id="userRole" class="role-badge"></span>
+            <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Déconnexion</button>
+        </div>
+    </header>
+
+    <main>
+        <form id="recipeForm">
+            <div class="form-section">
+                <h2><i class="fas fa-info-circle"></i> Informations de base</h2>
+                <div class="form-group">
+                    <label for="recipeName">Nom de la recette (obligatoire)</label>
+                    <input type="text" id="recipeName" required>
+                </div>
+                <div class="form-group">
+                    <label for="originalUrl">URL originale (optionnel)</label>
+                    <input type="url" id="originalUrl">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2><i class="fas fa-language"></i> Version française</h2>
+                <div class="form-group">
+                    <label for="recipeNameFR">Nom en français</label>
+                    <input type="text" id="recipeNameFR">
+                </div>
+                
+                <div class="form-group">
+                    <label>Ingrédients</label>
+                    <div id="ingredientsFRContainer" class="dynamic-list">
+                        <div class="ingredient-item">
+                            <input type="text" placeholder="Quantité" class="ingredient-quantity">
+                            <input type="text" placeholder="Nom" class="ingredient-name">
+                            <input type="text" placeholder="Type (ex: Viande)" class="ingredient-type">
+                            <button type="button" class="remove-btn"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <button type="button" id="addIngredientFR" class="add-btn"><i class="fas fa-plus"></i> Ajouter un ingrédient</button>
+                </div>
+                
+                <div class="form-group">
+                    <label>Étapes de préparation</label>
+                    <div id="stepsFRContainer" class="dynamic-list">
+                        <div class="step-item">
+                            <textarea placeholder="Description de l'étape"></textarea>
+                            <input type="number" placeholder="Durée (minutes)" min="0">
+                            <button type="button" class="remove-btn"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <button type="button" id="addStepFR" class="add-btn"><i class="fas fa-plus"></i> Ajouter une étape</button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2><i class="fas fa-language"></i> Version anglaise</h2>
+                <div class="form-group">
+                    <label>Ingrédients</label>
+                    <div id="ingredientsENContainer" class="dynamic-list">
+                        <div class="ingredient-item">
+                            <input type="text" placeholder="Quantity" class="ingredient-quantity">
+                            <input type="text" placeholder="Name" class="ingredient-name">
+                            <input type="text" placeholder="Type (ex: Meat)" class="ingredient-type">
+                            <button type="button" class="remove-btn"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <button type="button" id="addIngredientEN" class="add-btn"><i class="fas fa-plus"></i> Add ingredient</button>
+                </div>
+                
+                <div class="form-group">
+                    <label>Étapes de préparation</label>
+                    <div id="stepsENContainer" class="dynamic-list">
+                        <div class="step-item">
+                            <textarea placeholder="Step description"></textarea>
+                            <input type="number" placeholder="Duration (minutes)" min="0">
+                            <button type="button" class="remove-btn"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <button type="button" id="addStepEN" class="add-btn"><i class="fas fa-plus"></i> Add step</button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2><i class="fas fa-tags"></i> Tags alimentaires</h2>
+                <div class="diet-tags-container">
+                    <label class="tag-option">
+                        <input type="checkbox" name="dietTags" value="NoGluten"> Sans gluten
+                    </label>
+                    <label class="tag-option">
+                        <input type="checkbox" name="dietTags" value="NoMilk"> Sans lait
+                    </label>
+                    <label class="tag-option">
+                        <input type="checkbox" name="dietTags" value="Vegan"> Vegan
+                    </label>
+                    <label class="tag-option">
+                        <input type="checkbox" name="dietTags" value="Vegetarian"> Végétarien
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2><i class="fas fa-images"></i> Images</h2>
+                <div class="image-upload-container">
+                    <input type="file" id="recipeImages" accept="image/*" multiple>
+                    <label for="recipeImages" class="upload-btn">
+                        <i class="fas fa-cloud-upload-alt"></i> Sélectionner des images
+                    </label>
+                    <div id="imagePreview" class="image-preview"></div>
+                    <div class="form-group">
+                        <label for="preferredImage">Image préférée</label>
+                        <select id="preferredImage" disabled>
+                            <option value="">Sélectionnez après avoir ajouté des images</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="submit-btn"><i class="fas fa-save"></i> Créer la recette</button>
+            </div>
+        </form>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/createRecipe.js"></script>
+</body>
+</html>

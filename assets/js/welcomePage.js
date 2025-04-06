@@ -17,6 +17,12 @@ $(document).ready(function () {
     if (user.role === 'admin') $('#adminActions').removeClass('hidden');
     if (user.role === 'chef') $('#chefActions').removeClass('hidden');
 
+    // Gestion du bouton add recipe
+    if (user.role === 'chef') {
+        $('#addRecipeBtn').click(() => {
+            window.location.href = "createRecipe.html";
+        });
+    }
     // Gestion du bouton Admin
     if (user.role === 'admin') {
         $('#adminBtn').click(() => {
