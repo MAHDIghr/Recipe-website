@@ -21,7 +21,7 @@ $(document).ready(function () {
         $('#adminActions').removeClass('hidden');
         $('#translatorActions').removeClass('hidden');
     }
-    if (user.role === 'chef') $('#chefActions').removeClass('hidden');
+    
     
 
     // ===  Gestion des événements UI ===
@@ -53,6 +53,8 @@ $(document).ready(function () {
                 if (recipe) {
                     currentRecipe = recipe;
                     displayRecipe(recipe);
+                    //le chef peut modifier que ces propres recettes
+                    if (user.role === 'chef' && user.username === recipe.Author) $('#chefActions').removeClass('hidden');
                     updateLanguageSwitcher(recipe.langues);
                     checkChefPermissions(user, recipe);
                 } else {

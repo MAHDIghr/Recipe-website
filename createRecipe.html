@@ -115,17 +115,35 @@
 
             <div class="form-section">
                 <h2><i class="fas fa-images"></i> Images</h2>
-                <div class="image-upload-container">
-                    <input type="file" id="recipeImages" accept="image/*" multiple>
-                    <label for="recipeImages" class="upload-btn">
-                        <i class="fas fa-cloud-upload-alt"></i> Sélectionner des images
-                    </label>
-                    <div id="imagePreview" class="image-preview"></div>
+                <div id="imagesPreview" class="images-preview"></div>
+                <div class="form-group">
+                    <label>Ajouter des images</label>
+                    <div class="image-upload-options">
+                        <button type="button" id="addLocalImageBtn"><i class="fas fa-upload"></i> Uploader</button>
+                        <button type="button" id="addUrlImageBtn"><i class="fas fa-link"></i> Lien URL</button>
+                        <input type="file" id="imageUploadInput" accept="image/*" multiple style="display: none;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="preferredImage">Image préférée</label>
+                    <select id="preferredImage" class="image-selector">
+                        <option value="">Sélectionner une image</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Modale pour ajouter une image par URL -->
+            <div id="urlImageModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h3>Ajouter une image par URL</h3>
                     <div class="form-group">
-                        <label for="preferredImage">Image préférée</label>
-                        <select id="preferredImage" disabled>
-                            <option value="">Sélectionnez après avoir ajouté des images</option>
-                        </select>
+                        <label for="imageUrl">URL de l'image</label>
+                        <input type="url" id="imageUrl" placeholder="https://example.com/image.jpg">
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="secondary-btn close-modal">Annuler</button>
+                        <button type="button" id="confirmUrlImageBtn">Ajouter</button>
                     </div>
                 </div>
             </div>

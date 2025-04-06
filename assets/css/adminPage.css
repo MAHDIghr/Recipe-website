@@ -213,6 +213,11 @@ tr:hover {
     background: linear-gradient(135deg, #9e9e9e, #616161);
 }
 
+
+.view-recipe-btn {
+    background: linear-gradient(135deg, var(--info), #1e88e5);
+}
+
 .tabs {
     display: flex;
     margin-bottom: 1.5rem;
@@ -288,10 +293,12 @@ tr:hover {
     display: flex;
     gap: 0.5rem;
     margin-top: 1rem;
+    flex-wrap: wrap; /* Permet aux boutons de passer à la ligne si nécessaire */
 }
 
 .recipe-actions button {
     flex: 1;
+    min-width: 100px; /* Empêche les boutons de devenir trop petits */
     justify-content: center;
     padding: 0.6rem;
     font-size: 0.8rem;

@@ -20,7 +20,7 @@ $(document).ready(function() {
 
     // Variables pour stocker les images
     let uploadedImages = [];
-    let preferredImage = '';
+    let deletedImages = [];
 
     // Gestion des ingrédients et étapes
     $('#addIngredientFR').click(() => addIngredient('FR'));
@@ -29,7 +29,11 @@ $(document).ready(function() {
     $('#addStepEN').click(() => addStep('EN'));
 
     // Gestion de l'upload d'images
-    $('#recipeImages').change(handleImageUpload);
+    $('#addLocalImageBtn').click(() => $('#imageUploadInput').click());
+    $('#addUrlImageBtn').click(() => $('#urlImageModal').show());
+    $('.close-modal').click(() => $('#urlImageModal').hide());
+    $('#confirmUrlImageBtn').click(addImageFromUrl);
+    $('#imageUploadInput').change(handleImageUpload);
     
     // Gestion de la soumission du formulaire
     $('#recipeForm').submit(createRecipe);
@@ -66,60 +70,102 @@ $(document).ready(function() {
         });
     }
 
-    function handleImageUpload(e) {
-        const files = e.target.files;
-        if (!files) return;
+    // Affichage des images
+    function displayImages(images) {
+        const container = $('#imagesPreview').empty();
+        const preferredSelect = $('#preferredImage').empty().append('<option value="">Sélectionner une image</option>');
 
-        const previewContainer = $('#imagePreview').empty();
-        $('#preferredImage').empty().append('<option value="">Sélectionnez une image préférée</option>');
-
-        Array.from(files).forEach(file => {
-            if (!file.type.match('image.*')) return;
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const imageId = 'img-' + Date.now();
-                uploadedImages.push({
-                    id: imageId,
-                    file: file,
-                    url: e.target.result
-                });
-
-                const previewItem = $(`
-                    <div class="image-preview-item">
-                        <img src="${e.target.result}" alt="Preview">
-                        <button type="button" class="remove-btn remove-img" data-id="${imageId}">
-                            <i class="fas fa-times"></i>
+        images.forEach((img, index) => {
+            const isLocal = img.startsWith('uploads/');
+            const imgUrl = isLocal ? '../' + img : img;
+            
+            const imgElement = $(`
+                <div class="image-preview-item" data-index="${index}">
+                    <img src="${imgUrl}" alt="Preview">
+                    <div class="image-actions">
+                        <button type="button" class="set-preferred-btn" title="Définir comme image préférée">
+                            <i class="fas fa-star"></i>
+                        </button>
+                        <button type="button" class="delete-image-btn" title="Supprimer cette image">
+                            <i class="fas fa-trash"></i>
                         </button>
                     </div>
-                `);
-                previewContainer.append(previewItem);
+                </div>
+            `);
 
-                $('#preferredImage').append(`<option value="${imageId}">${file.name}</option>`);
-            };
-            reader.readAsDataURL(file);
+            container.append(imgElement);
+            preferredSelect.append(`<option value="${img}">Image ${index + 1}</option>`);
+
+            // Gestion des événements
+            imgElement.find('.set-preferred-btn').click(() => {
+                $('#preferredImage').val(img);
+            });
+
+            imgElement.find('.delete-image-btn').click(() => {
+                if (confirm("Supprimer cette image ?")) {
+                    uploadedImages = uploadedImages.filter((_, i) => i !== index);
+                    displayImages(uploadedImages);
+                    if ($('#preferredImage').val() === img) {
+                        $('#preferredImage').val('');
+                    }
+                }
+            });
         });
 
-        $('#preferredImage').prop('disabled', false);
+        // Active le sélecteur s'il y a des images
+        $('#preferredImage').prop('disabled', uploadedImages.length === 0);
     }
 
-    // Suppression d'image
-    $('#imagePreview').on('click', '.remove-img', function() {
-        const imageId = $(this).data('id');
-        uploadedImages = uploadedImages.filter(img => img.id !== imageId);
-        $(this).parent().remove();
+    // Gestion de l'upload d'images locales
+    function handleImageUpload(e) {
+        const files = e.target.files;
+        if (!files.length) return;
 
-        // Mettre à jour la liste déroulante
-        $('#preferredImage option[value="' + imageId + '"]').remove();
-        if (uploadedImages.length === 0) {
-            $('#preferredImage').prop('disabled', true);
+        const formData = new FormData();
+        for (let i = 0; i < files.length; i++) {
+            formData.append('images[]', files[i]);
         }
-    });
 
-    // Sélection de l'image préférée
-    $('#preferredImage').change(function() {
-        preferredImage = $(this).val();
-    });
+        $.ajax({
+            url: 'php/recipes/uploadImages.php',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: (response) => {
+                if (response.success) {
+                    uploadedImages = [...uploadedImages, ...response.imagePaths];
+                    displayImages(uploadedImages); // Affiche toutes les images
+                } else {
+                    alert("Erreur lors de l'upload: " + response.message);
+                }
+            },
+            error: (xhr) => {
+                console.error("Erreur:", xhr.responseText);
+                alert("Erreur lors de l'upload des images");
+            }
+        });
+    }
+
+    // Ajout d'une image par URL
+    function addImageFromUrl() {
+        const url = $('#imageUrl').val().trim();
+        if (!url) {
+            alert("Veuillez entrer une URL valide");
+            return;
+        }
+
+        // Vérification simple de l'URL
+        if (!url.match(/^https?:\/\/.+\..+/) || !url.match(/\.(jpeg|jpg|gif|png|svg)$/)) {
+            alert("URL d'image invalide. Doit commencer par http/https et se terminer par .jpg, .png ou .gif .svg .jpeg");
+            return;
+        }
+
+        uploadedImages.push(url);
+        displayImages(uploadedImages); // Affiche toutes les images
+        $('#imageUrl').val('');
+        $('#urlImageModal').hide();
+    }
 
     async function createRecipe(e) {
         e.preventDefault();
@@ -132,12 +178,11 @@ $(document).ready(function() {
         }
 
         // Vérification du nombre d'ingrédients
-        // Récupération des ingrédients avec vérification
         const ingredientsEN = getIngredients('EN');
-        if (ingredientsEN === null) return; // S'arrête si erreur dans les ingrédients EN
+        if (ingredientsEN === null) return;
         
         const ingredientsFR = getIngredients('FR');
-        if (ingredientsFR === null) return; // S'arrête si erreur dans les ingrédients FR
+        if (ingredientsFR === null) return;
 
         if (ingredientsEN.length !== ingredientsFR.length && (ingredientsEN.length > 0 && ingredientsFR.length > 0)) {
             alert('Le nombre d\'ingrédients en français doit être égal au nombre d\'ingrédients en anglais');
@@ -165,8 +210,8 @@ $(document).ready(function() {
             steps: stepsEN,
             stepsFR: stepsFR,
             timers: getTimers('EN'),
-            imageURL: [],
-            imagePreferred: '',
+            imageURL: uploadedImages,
+            imagePreferred: $('#preferredImage').val() || (uploadedImages.length > 0 ? uploadedImages[0] : ''),
             langues: [],
             likes: 0,
             likedBy: [],
@@ -181,41 +226,6 @@ $(document).ready(function() {
         }
         if (recipeData.ingredients.length > 0 || recipeData.steps.length > 0) {
             recipeData.langues.push('en');
-        }
-
-        // Upload des images si elles existent
-        if (uploadedImages.length > 0) {
-            try {
-                const formData = new FormData();
-                uploadedImages.forEach(img => {
-                    formData.append('images[]', img.file);
-                });
-
-                const uploadResponse = await $.ajax({
-                    url: 'php/recipes/uploadImages.php',
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false
-                });
-
-                recipeData.imageURL = uploadResponse.imagePaths;
-                
-                // Définir l'image préférée
-                if (preferredImage) {
-                    const preferredImg = uploadedImages.find(img => img.id === preferredImage);
-                    if (preferredImg) {
-                        const preferredIndex = uploadedImages.findIndex(img => img.id === preferredImage);
-                        recipeData.imagePreferred = uploadResponse.imagePaths[preferredIndex];
-                    }
-                } else {
-                    recipeData.imagePreferred = uploadResponse.imagePaths[0];
-                }
-            } catch (error) {
-                console.error("Erreur lors de l'upload des images:", error);
-                alert("Une erreur est survenue lors de l'upload des images");
-                return;
-            }
         }
 
         // Enregistrement de la recette
@@ -248,14 +258,13 @@ $(document).ready(function() {
             const name = $(this).find('.ingredient-name').val().trim();
             const type = $(this).find('.ingredient-type').val().trim();
             
-            // Vérification que tous les champs sont remplis ou tous vides
             const fields = [quantity, name, type];
             const filledFields = fields.filter(field => field !== '');
             
             if (filledFields.length > 0 && filledFields.length < 3) {
                 alert(`Pour l'ingrédient en ${lang === 'FR' ? 'français' : 'anglais'}, vous devez remplir tous les champs ou aucun.`);
                 hasError = true;
-                return false; // Sortie de la boucle each
+                return false;
             }
             
             if (name) {
@@ -267,10 +276,7 @@ $(document).ready(function() {
             }
         });
         
-        if (hasError) {
-            return null; // Retourne null en cas d'erreur
-        }
-        
+        if (hasError) return null;
         return ingredients;
     }
 

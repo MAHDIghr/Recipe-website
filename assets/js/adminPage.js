@@ -183,6 +183,12 @@ function renderPendingRecipes(recipes) {
                 <div class="recipe-info">
                     <h3 class="recipe-title">${name}</h3>
                     <div class="recipe-actions">
+                        <button class="accept-btn" data-id="${recipe.id}">
+                            <i class="fas fa-check"></i> Accepter
+                        </button>
+                        <button class="reject-btn" data-id="${recipe.id}">
+                            <i class="fas fa-times"></i> Rejeter
+                        </button>
                         <button class="view-recipe-btn">
                             <i class="fas fa-eye"></i> Voir
                         </button>
@@ -192,73 +198,23 @@ function renderPendingRecipes(recipes) {
         `);
     });
 
-    // Gestion du bouton "Voir"
+    // Gestion des boutons
     $('.view-recipe-btn').click(function() {
         const recipeId = $(this).closest('.recipe-card').data('id');
-        showRecipeDetails(recipeId);
+        window.location.href = `recipeDetail.html?id=${recipeId}`;
     });
-}
 
-function showRecipeDetails(recipeId) {
-    $.get('../../data/recipes.json', function(recipes) {
-        const recipe = recipes.find(r => r.id === recipeId);
-        if (recipe) {
-            renderRecipeModal(recipe);
-            $('#recipeModal').show();
-            
-            // Définir les IDs pour les boutons d'action
-            $('#acceptRecipeBtn').data('id', recipeId);
-            $('#rejectRecipeBtn').data('id', recipeId);
+    $('.accept-btn').click(function() {
+        const recipeId = $(this).data('id');
+        if (confirm("Êtes-vous sûr de vouloir accepter cette recette ?")) {
+            acceptRecipe(recipeId);
         }
     });
-}
 
-function renderRecipeModal(recipe) {
-    const $modalContent = $('#modalRecipeContent');
-    $modalContent.empty();
-    
-    const name = recipe.nameFR || recipe.name;
-    const image = recipe.imagePreferred || 'assets/img/default-recipe.jpg';
-    
-    $modalContent.append(`
-        <div class="recipe-header">
-            <h2>${name}</h2>
-        </div>
-        <div class="recipe-image">
-            <img src="${image}" alt="${name}" style="max-width: 100%; border-radius: 8px;">
-        </div>
-        <div class="recipe-meta">
-            <div>
-                <strong>Auteur:</strong> ${recipe.Author}
-            </div>
-            <div>
-                <strong>Date de création:</strong> ${new Date(recipe.createdAt).toLocaleDateString()}
-            </div>
-        </div>
-        <div class="recipe-content">
-            <div class="ingredients-section">
-                <h3>Ingrédients</h3>
-                <ul id="ingredientsList">
-                    ${recipe.ingredients.map(ing => `<li>${ing.quantity} ${ing.name}</li>`).join('')}
-                </ul>
-            </div>
-            <div class="steps-section">
-                <h3>Étapes</h3>
-                <ol id="stepsList">
-                    ${recipe.steps.map(step => `<li>${step}</li>`).join('')}
-                </ol>
-            </div>
-        </div>
-    `);
-    
-    // Gestion des boutons d'action
-    $('#acceptRecipeBtn').off('click').click(function() {
-        acceptRecipe($(this).data('id'));
-    });
-    
-    $('#rejectRecipeBtn').off('click').click(function() {
-        if (confirm("Êtes-vous sûr de vouloir rejeter cette recette ? Elle sera supprimée définitivement.")) {
-            rejectRecipe($(this).data('id'));
+    $('.reject-btn').click(function() {
+        const recipeId = $(this).data('id');
+        if (confirm("Êtes-vous sûr de vouloir rejeter cette recette ?")) {
+            rejectRecipe(recipeId);
         }
     });
 }
@@ -270,7 +226,6 @@ function acceptRecipe(recipeId) {
         contentType: 'application/json',
         data: JSON.stringify({ id: recipeId, status: 'accepted' }),
         success: () => {
-            $('#recipeModal').hide();
             loadPendingRecipes();
         },
         error: error => console.error("Erreur d'acceptation:", error)
@@ -280,7 +235,6 @@ function acceptRecipe(recipeId) {
 function rejectRecipe(recipeId) {
     $.post('php/recipes/deleteRecipe.php', { id: recipeId })
         .done(() => {
-            $('#recipeModal').hide();
             loadPendingRecipes();
         })
         .fail(error => console.error("Erreur de rejet:", error));
