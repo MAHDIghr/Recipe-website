@@ -220,16 +220,38 @@ function renderPendingRecipes(recipes) {
 }
 
 function acceptRecipe(recipeId) {
-    $.ajax({
-        url: 'php/admin/updateRecipeStatus.php',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({ id: recipeId, status: 'accepted' }),
-        success: () => {
-            loadPendingRecipes();
-        },
-        error: error => console.error("Erreur d'acceptation:", error)
-    });
+    // D'abord, récupérer la recette complète
+    $.get(`php/recipes/getRecipeById.php?id=${recipeId}`)
+        .done(recipe => {
+            if (!recipe) {
+                console.error("Recette non trouvée");
+                return;
+            }
+
+            // Mettre à jour le statut de la recette
+            const updatedRecipe = {
+                ...recipe,
+                status: 'accepted' // Changer le statut
+            };
+
+            // Envoyer la recette complète mise à jour
+            $.ajax({
+                url: 'php/recipes/updateRecipe.php',
+                type: 'POST',
+                data: { recipe: JSON.stringify(updatedRecipe) },
+                success: () => {
+                    loadPendingRecipes();
+                },
+                error: error => {
+                    console.error("Erreur d'acceptation:", error);
+                    alert("Erreur lors de la mise à jour de la recette");
+                }
+            });
+        })
+        .fail(error => {
+            console.error("Erreur de récupération de la recette:", error);
+            alert("Erreur lors de la récupération de la recette");
+        });
 }
 
 function rejectRecipe(recipeId) {
