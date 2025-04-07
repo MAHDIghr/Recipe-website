@@ -64,20 +64,27 @@ $(document).ready(function() {
         
         sourceIngredients.forEach((ing, index) => {
             const targetIng = targetIngredients[index] || {};
-            const isReadOnly = lang === 'FR' && !targetIng.name;
+            // Un champ est modifiable seulement si:
+            // - C'est la version anglaise (EN)
+            // - Le champ correspondant en français est rempli
+            // - Le champ anglais est vide
+            const isEditable = lang === 'EN' && 
+                              sourceIngredients[index].name && 
+                              !targetIng.name;
             
             const item = $(`
                 <div class="ingredient-item">
                     <input type="text" value="${ing.quantity || ''}" 
-                           ${lang === 'FR' ? 'readonly' : ''} 
+                           ${lang === 'FR' ? 'readonly' : 'readonly'} 
                            class="ingredient-quantity" 
                            data-index="${index}">
                     <input type="text" value="${lang === 'FR' ? (ing.name || '') : (targetIng.name || '')}" 
-                           ${isReadOnly ? 'readonly' : ''} 
+                           ${!isEditable ? 'readonly' : ''} 
                            class="ingredient-name" 
-                           data-index="${index}">
+                           data-index="${index}"
+                           ${isEditable ? '' : 'readonly'}>
                     <input type="text" value="${ing.type || ''}" 
-                           ${lang === 'FR' ? 'readonly' : ''} 
+                           ${lang === 'FR' ? 'readonly' : 'readonly'} 
                            class="ingredient-type" 
                            data-index="${index}">
                 </div>
@@ -92,11 +99,16 @@ $(document).ready(function() {
         
         sourceSteps.forEach((step, index) => {
             const targetStep = targetSteps[index] || '';
-            const isReadOnly = lang === 'FR' && !targetStep;
+            // Un champ est modifiable seulement si:
+            // - Le champ correspondant en deuxieme langue est rempli
+            // - Le champ est vide
+            const isEditable = lang === 'EN' && 
+                              sourceSteps[index] && 
+                              !targetStep;
             
             const item = $(`
                 <div class="step-item">
-                    <textarea ${isReadOnly ? 'readonly' : ''} 
+                    <textarea ${!isEditable ? 'readonly' : ''} 
                               data-index="${index}">${lang === 'FR' ? step : (targetStep || '')}</textarea>
                 </div>
             `);
@@ -108,27 +120,43 @@ $(document).ready(function() {
     function saveTranslation(originalRecipe) {
         const updatedRecipe = {...originalRecipe};
         
-        // Mettre à jour le nom anglais
-        updatedRecipe.name = $('#recipeNameEN').val().trim() || originalRecipe.name;
+        // Mettre à jour le nom anglais seulement s'il était vide et modifié
+        const newNameEN = $('#recipeNameEN').val().trim();
+        if (!updatedRecipe.name && newNameEN) {
+            updatedRecipe.name = newNameEN;
+        }
         
-        // Mettre à jour les ingrédients anglais
+        // Mettre à jour les ingrédients anglais seulement s'ils étaient vides et modifiés
         updatedRecipe.ingredients = originalRecipe.ingredients.map((ing, index) => {
             const nameEN = $(`#ingredientsEN .ingredient-name[data-index="${index}"]`).val().trim();
             return {
                 ...ing,
-                name: nameEN || ing.name
+                name: (!ing.name && nameEN) ? nameEN : ing.name
             };
         });
         
-        // Mettre à jour les étapes anglaises
+        // Mettre à jour les étapes anglaises seulement si elles étaient vides et modifiées
         updatedRecipe.steps = originalRecipe.steps.map((step, index) => {
             const stepEN = $(`#stepsEN textarea[data-index="${index}"]`).val().trim();
-            return stepEN || step;
+            return (!step && stepEN) ? stepEN : step;
         });
         
-        // Mettre à jour les langues disponibles
-        if (!updatedRecipe.langues.includes('en')) {
+        // Mettre à jour les langues disponibles si nécessaire
+        if (!updatedRecipe.langues.includes('en') && 
+            (updatedRecipe.name !== originalRecipe.name || 
+             JSON.stringify(updatedRecipe.ingredients) !== JSON.stringify(originalRecipe.ingredients) ||
+             JSON.stringify(updatedRecipe.steps) !== JSON.stringify(originalRecipe.steps))) {
             updatedRecipe.langues.push('en');
+        }
+        
+        // Vérifier si des modifications ont été faites
+        const hasChanges = updatedRecipe.name !== originalRecipe.name ||
+                          JSON.stringify(updatedRecipe.ingredients) !== JSON.stringify(originalRecipe.ingredients) ||
+                          JSON.stringify(updatedRecipe.steps) !== JSON.stringify(originalRecipe.steps);
+        
+        if (!hasChanges) {
+            alert('Aucune modification valide à enregistrer');
+            return;
         }
         
         // Envoyer la mise à jour au serveur
