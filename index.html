@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe.com - Découvrez des recettes extraordinaires</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS intégré pour la page d'accueil */
+        :root {
+            --primary: #8bc34a;
+            --primary-dark: #689f38;
+            --secondary: #ff9800;
+            --white: #ffffff;
+            --dark: #2d3436;
+            --light: #f5f7fa;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Animation de fond */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(139, 195, 74, 0.1);
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -50px;
+            left: -50px;
+            animation-delay: 0s;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            bottom: 100px;
+            right: 100px;
+            animation-delay: 2s;
+        }
+
+        .circle-3 {
+            width: 150px;
+            height: 150px;
+            top: 200px;
+            right: 200px;
+            animation-delay: 4s;
+        }
+
+        /* Contenu principal */
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInDown 1s ease-out, pulse 2s 2s infinite;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            opacity: 0;
+            animation: fadeInUp 1s 0.5s ease-out forwards;
+            line-height: 1.6;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            color: #636e72;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeInUp 1s 1s ease-out forwards;
+        }
+
+        /* Bouton */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s 1.5s ease-out forwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(139, 195, 74, 0.4);
+        }
+
+        .cta-button i {
+            margin-right: 10px;
+            font-size: 1.4rem;
+        }
+
+        /* Icônes animées */
+        .food-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .food-icon {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .food-icon:nth-child(1) { animation-delay: 0.8s; }
+        .food-icon:nth-child(2) { animation-delay: 1s; }
+        .food-icon:nth-child(3) { animation-delay: 1.2s; }
+        .food-icon:nth-child(4) { animation-delay: 1.4s; }
+        .food-icon:nth-child(5) { animation-delay: 1.6s; }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(20px, 20px);
+            }
+            50% {
+                transform: translate(-10px, 10px);
+            }
+            75% {
+                transform: translate(10px, -10px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .description {
+                font-size: 1rem;
+            }
+            
+            .cta-button {
+                font-size: 1rem;
+                padding: 0.8rem 2rem;
+            }
+            
+            .food-icon {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animation de fond -->
+    <div class="bg-animation">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+    </div>
+
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="logo">Recipe.com</h1>
+            <p class="tagline">Découvrez, partagez et savourez des recettes extraordinaires</p>
+            <p class="description">
+                Rejoignez notre communauté de passionnés de cuisine et accédez à des milliers 
+                de recettes créatives pour toutes les occasions et tous les régimes alimentaires.
+            </p>
+            <a href="loginSignUp.html" class="cta-button">
+                <i class="fas fa-sign-in-alt"></i> Commencer l'aventure
+            </a>
+            
+            <!-- Icônes alimentaires animées -->
+            <div class="food-icons">
+                <div class="food-icon"><i class="fas fa-utensils"></i></div>
+                <div class="food-icon"><i class="fas fa-cheese"></i></div>
+                <div class="food-icon"><i class="fas fa-apple-alt"></i></div>
+                <div class="food-icon"><i class="fas fa-bread-slice"></i></div>
+                <div class="food-icon"><i class="fas fa-ice-cream"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Petit script pour une animation supplémentaire au scroll -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animation des icônes au survol
+            const icons = document.querySelectorAll('.food-icon');
+            icons.forEach(icon => {
+                icon.addEventListener('mouseenter', () => {
+                    icon.style.transform = 'translateY(-10px) scale(1.2)';
+                    icon.style.transition = 'all 0.3s ease';
+                });
+                icon.addEventListener('mouseleave', () => {
+                    icon.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Effet parallaxe léger
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.scrollY;
+                document.querySelector('.circle-1').style.transform = 
+                    `translate(${scrollPosition * 0.02}px, ${scrollPosition * 0.02}px)`;
+                document.querySelector('.circle-2').style.transform = 
+                    `translate(${scrollPosition * -0.03}px, ${scrollPosition * 0.03}px)`;
+                document.querySelector('.circle-3').style.transform = 
+                    `translate(${scrollPosition * 0.01}px, ${scrollPosition * -0.02}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
