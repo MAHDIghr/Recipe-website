@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion / Inscription</title>
     <link rel="stylesheet" href="assets/css/loginSignUp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="container" id="container">
@@ -12,16 +13,41 @@
         <div class="form-container sign-up-container">
             <form id="signupForm">
                 <h1>Créer un Compte</h1>
-                <input type="text" name="username" placeholder="Nom d'utilisateur" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Mot de passe" required>
-                <input type="password" name="confirmPassword" placeholder="Confirmer le mot de passe" required>
-                <select name="role_request">
-                    <option value="cuisinier">Cuisinier</option>
-                    <option value="demande_chef">Demander rôle Chef</option>
-                    <option value="demande_traducteur">Demander rôle Traducteur</option>
-                </select>
-                <button type="submit">S'inscrire</button>
+                <div class="input-group">
+                    <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="Email" required>
+                    <i class="fas fa-envelope"></i>
+                    <small class="error-message" id="emailError"></small>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" placeholder="Mot de passe" required id="passwordInput">
+                    <i class="fas fa-lock"></i>
+                    <small class="strength-text"></small>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="confirmPassword" placeholder="Confirmer le mot de passe" required>
+                    <i class="fas fa-lock"></i>
+                    <small class="error-message" id="passwordError"></small>
+                </div>
+                <div class="input-group">
+                    <select name="role_request">
+                        <option value="cuisinier">Cuisinier</option>
+                        <option value="demande_chef">Demander rôle Chef</option>
+                        <option value="demande_traducteur">Demander rôle Traducteur</option>
+                    </select>
+                    <i class="fas fa-user-tag"></i>
+                </div>
+                <button type="submit" id="signupBtn">
+                    <span class="btn-text">S'inscrire</span>
+                    <div class="spinner hidden">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                    </div>
+                </button>
             </form>
         </div>
 
@@ -29,9 +55,22 @@
         <div class="form-container sign-in-container">
             <form id="loginForm">
                 <h1>Se Connecter</h1>
-                <input type="text" name="username" placeholder="Nom d'utilisateur" required>
-                <input type="password" name="password" placeholder="Mot de passe" required>
-                <button type="submit">Se Connecter</button>
+                <div class="input-group">
+                    <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" placeholder="Mot de passe" required>
+                    <i class="fas fa-lock"></i>
+                </div>
+                <button type="submit" id="loginBtn">
+                    <span class="btn-text">Se Connecter</span>
+                    <div class="spinner hidden">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                    </div>
+                </button>
             </form>
         </div>
 

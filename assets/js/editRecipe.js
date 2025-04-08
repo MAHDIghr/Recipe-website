@@ -14,7 +14,11 @@ $(document).ready(function () {
 
     // Initialisation de l'interface
     $('#username').text(user.username);
-    $('#userRole').text(user.role);
+    $('#userRole').text(
+        user.second_role === "traducteur" 
+          ? `${user.role} / ${user.second_role}`
+          : user.role
+    );
 
     // Gestion des événements
     $('#backBtn, #cancelBtn').click(() => window.history.back());

@@ -8,7 +8,11 @@ $(document).ready(function() {
 
     // Afficher les infos utilisateur
     $('#username').text(user.username);
-    $('#userRole').text(user.role);
+    $('#userRole').text(
+        user.second_role === "traducteur" 
+          ? `${user.role} / ${user.second_role}`
+          : user.role
+    );
 
     // Gestion des boutons
     $('#backBtn').click(() => {
@@ -68,7 +72,7 @@ function renderUsers(users) {
             <tr>
                 <td>${user.username}</td>
                 <td>${user.email}</td>
-                <td>${user.role || 'Utilisateur'}</td>
+                <td>${user.second_role === "traducteur" ? `${user.role || 'Utilisateur'} / ${user.second_role}` : user.role || 'Utilisateur'}</td>
                 <td>
                     <button class="action-btn delete-btn" data-id="${user.id}">
                         <i class="fas fa-trash"></i> Supprimer

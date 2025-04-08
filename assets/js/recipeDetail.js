@@ -17,7 +17,11 @@ $(document).ready(function () {
 
     // ===  Affichage des infos utilisateur ===
     $('#username').text(user.username);
-    $('#userRole').text(user.role);
+    $('#userRole').text(
+        user.second_role === "traducteur" 
+          ? `${user.role} / ${user.second_role}`
+          : user.role
+    );
 
     // ===  Affichage conditionnel selon le rôle ===
     if (user.second_role === 'traducteur') $('#translatorActions').removeClass('hidden');

@@ -8,7 +8,11 @@ $(document).ready(function() {
 
     // Affichage des infos utilisateur
     $('#username').text(user.username);
-    $('#userRole').text(user.role);
+    $('#userRole').text(
+        user.second_role === "traducteur" 
+          ? `${user.role} / ${user.second_role}`
+          : user.role
+    );
 
     // Gestion des boutons
     $('#backBtn').click(() => window.history.back());

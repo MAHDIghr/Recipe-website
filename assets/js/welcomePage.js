@@ -11,8 +11,11 @@ $(document).ready(function () {
 
     // Affiche le nom d'utilisateur et son rôle
     $('#username').text(user.username);
-    $('#userRole').text(user.role);
-
+    $('#userRole').text(
+        user.second_role === "traducteur" 
+          ? `${user.role} / ${user.second_role}`
+          : user.role
+    );
     // Affiche les options spécifiques selon le rôle (admin ou chef)
     if (user.role === 'admin') $('#adminActions').removeClass('hidden');
     if (user.role === 'chef') $('#chefActions').removeClass('hidden');

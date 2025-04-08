@@ -11,7 +11,11 @@ $(document).ready(function () {
 
     // Affiche le nom d'utilisateur et son rôle
     $('#username').text(user.username);
-    $('#userRole').text(user.role);
+    $('#userRole').text(
+        user.second_role === "traducteur" 
+          ? `${user.role} / ${user.second_role}`
+          : user.role
+    );
 
     // Gestion du bouton Retour
     $('#backBtn').click(() => {
