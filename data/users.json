@@ -6,33 +6,6 @@
         "password": "$2y$12$W7jeoaPvtgJITnh7SbHjNe9ITC1iwhCcMdcTP0Nc1IPSqonPclONa",
         "role": "admin",
         "second_role": null,
-        "role_request": "cuisinier"
-    },
-    {
-        "id": "67f58cb8b5cc7",
-        "username": "test",
-        "email": "test@gmail.com",
-        "password": "$2y$12$cDgufalg3GaKPmhrmVORQO3OgjA2VUNvqc6WgV4SE3GmFAcwfvz.6",
-        "role": "cuisinier",
-        "second_role": null,
-        "role_request": "cuisinier"
-    },
-    {
-        "id": "67f5934716fde",
-        "username": "test1",
-        "email": "test@gmail.com",
-        "password": "$2y$12$rIG0Qvj\/GGAhU\/dqJo\/L..IxegIGI3ger0luzkeP0kTeuVKPywV4K",
-        "role": "chef",
-        "second_role": null,
-        "role_request": null
-    },
-    {
-        "id": "67f59403bffd3",
-        "username": "traducteur chef",
-        "email": "trad@gmail.com",
-        "password": "$2y$12$V.ukZKsiXtYKeEoC1nu2.uVN83yZY6wbDlftePTBm2rBYiq\/crn9C",
-        "role": "cuisinier",
-        "second_role": "traducteur",
         "role_request": null
     }
 ]

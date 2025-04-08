@@ -97,7 +97,6 @@
         "likedBy": [
             "user123",
             "user789",
-            "mahdi",
             "demande chef"
         ],
         "comments": [
@@ -120,24 +119,6 @@
                     "uploads\/comment1.jpg"
                 ],
                 "createdAt": "2023-05-21T09:15:00Z"
-            },
-            {
-                "id": "com1743867324946",
-                "userId": "mahdi",
-                "username": "mahdi",
-                "text": "test",
-                "images": [],
-                "createdAt": "2025-04-05T15:35:24.946Z"
-            },
-            {
-                "id": "com1744024254796",
-                "userId": "admin",
-                "username": "admin",
-                "text": "test",
-                "images": [
-                    "uploads\/img_67f3b2bec09a7.jpg"
-                ],
-                "createdAt": "2025-04-07T11:10:54.796Z"
             }
         ],
         "originalURL": "http:\/\/www.food.com\/recipe\/to-die-for-crock-pot-roast-27208",
@@ -382,8 +363,7 @@
         "likedBy": [
             "user123",
             "user456",
-            "user789",
-            "mahdi"
+            "user789"
         ],
         "comments": [
             {
@@ -562,22 +542,6 @@
                     "uploads\/yorkshire1.jpg"
                 ],
                 "createdAt": "2023-05-11T18:40:00Z"
-            },
-            {
-                "id": "com1743812164346",
-                "userId": "mahdi",
-                "username": "mahdi",
-                "text": "test",
-                "images": [],
-                "createdAt": "2025-04-05T00:16:04.346Z"
-            },
-            {
-                "id": "com1743852733268",
-                "userId": "mahdi",
-                "username": "mahdi",
-                "text": "ok",
-                "images": [],
-                "createdAt": "2025-04-05T11:32:13.268Z"
             }
         ],
         "originalURL": "https:\/\/fr.wikipedia.org\/wiki\/Yorkshire_pudding",
