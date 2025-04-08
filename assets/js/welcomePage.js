@@ -33,7 +33,6 @@ $(document).ready(function () {
         });
     }
 
-    
     // Gestion de la déconnexion : supprime les données du localStorage et redirige
     $('#logoutBtn').click(() => {
         localStorage.removeItem("authToken");
@@ -44,6 +43,12 @@ $(document).ready(function () {
     // Gestion du changement de langue via les boutons
     $('#switchToFr').click(() => switchLanguage('fr'));
     $('#switchToEn').click(() => switchLanguage('en'));
+
+    // Gestion de la recherche
+    $('#searchBtn').click(searchRecipes);
+    $('#searchInput').keypress(function(e) {
+        if (e.which === 13) searchRecipes();
+    });
 
     // Chargement initial des recettes
     loadRecipes();
@@ -60,7 +65,30 @@ $(document).ready(function () {
         $('#recipesTitle').text(lang === 'fr' ? 'Toutes les recettes' : 'All recipes');
 
         // Recharge les recettes dans la langue sélectionnée
-        loadRecipes();
+        if ($('#searchInput').val().trim() === '') {
+            loadRecipes();
+        } else {
+            searchRecipes();
+        }
+    }
+
+    // Fonction pour effectuer la recherche
+    function searchRecipes() {
+        const searchTerm = $('#searchInput').val().trim();
+        
+        if (searchTerm === '') {
+            loadRecipes();
+            return;
+        }
+
+        $.get(`php/recipes/searchRecipesByKeyWord.php?term=${encodeURIComponent(searchTerm)}`)
+            .done(recipes => {
+                renderRecipes(recipes, currentLanguage);
+            })
+            .fail(xhr => {
+                console.error("Erreur de recherche:", xhr.responseText);
+                $('#recipesList').html('<p>Erreur lors de la recherche.</p>');
+            });
     }
 
     // Fonction pour récupérer les recettes depuis le backend
@@ -77,6 +105,11 @@ $(document).ready(function () {
     // Fonction pour afficher les recettes dans la page
     function renderRecipes(recipes, lang) {
         $('#recipesList').empty();
+
+        if (recipes.length === 0) {
+            $('#recipesList').html('<p class="no-results">Aucune recette trouvée.</p>');
+            return;
+        }
 
         // Pour chaque recette, crée une carte de présentation
         recipes.forEach(recipe => {
